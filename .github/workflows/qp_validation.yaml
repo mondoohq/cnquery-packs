@@ -1,0 +1,30 @@
+name: Validate Query Packs
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    name: Ensure changed packs are valid
+    steps:
+      - uses: actions/checkout@v3
+      - name: Get changed files
+        id: changed-files
+        uses: tj-actions/changed-files@v32
+      - name: Installing cnquery
+        run: |
+          bash -c "$(curl -sSL https://install.mondoo.com/sh/cnquery)"
+      - name: Validate changed packs
+        run: |
+          for file in ${{ steps.changed-files.outputs.all_changed_files }}; do
+            if [[ $file == *.mql.yaml ]]; then
+              echo "Validating ${file}..."
+              cnquery bundle validate ${file}
+            fi
+          done
