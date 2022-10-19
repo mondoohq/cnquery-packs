@@ -23,8 +23,16 @@ jobs:
       - name: Validate changed packs
         run: |
           for file in ${{ steps.changed-files.outputs.all_changed_files }}; do
+            echo "- Detected changed file: ${file}"
             if [[ $file == *.mql.yaml ]]; then
-              echo "Validating ${file}..."
-              cnquery bundle validate ${file}
+              echo "--> Validating ${file}..."
+              if cnquery bundle validate ${file}; then
+                echo "--> ${file} is valid"
+              else
+                echo "--> ${file} is invalid"
+                echo "::error file=${file}::${file} is not a valid query pack"
+                exit 1
+              fi
+
             fi
           done
