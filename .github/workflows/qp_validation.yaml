@@ -1,5 +1,4 @@
-name: Validate Query Packs
-
+name: Pack Validation
 on:
   push:
     branches:
@@ -11,7 +10,7 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    name: Ensure changed packs are valid
+    name: Validate changed packs
     steps:
       - uses: actions/checkout@v3
       - name: Get changed files
