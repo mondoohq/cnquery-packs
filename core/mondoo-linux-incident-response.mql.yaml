@@ -24,7 +24,7 @@ packs:
         title: Retrieve information about running processes
         query: |
           if ( mondoo.capabilities.contains('run-command') ) {
-            processes.list { pid  command }
+            processes { pid  command }
           }
       - uid: mondoo-linux-mounts
         title: Retrieves list of mounted devices
