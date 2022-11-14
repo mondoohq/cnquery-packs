@@ -51,7 +51,7 @@ packs:
             isVerified
           }
       - uid: mondoo-ssl-tls-certificate-incident-response-when-expire
-        title: Get a list when certificates in the certificate chain expire
+        title: Retrieve the expiration dates for all certificates in the certificate chain
         query: |
           tls.certificates {
             subject.commonName
