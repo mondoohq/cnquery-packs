@@ -35,14 +35,14 @@ packs:
         query: |
           tls.ciphers
       - uid: mondoo-ssl-tls-certificate-incident-response-signing-algo
-        title: Get information about signature algorithm of all certificates in the certificate chain
+        title: Retrieve information about signature algorithm of all certificates in the certificate chain
         query: |
           tls.certificates {
             signingAlgorithm
             subject.commonName
           }
       - uid: mondoo-ssl-tls-certificate-incident-response-is-revoked
-        title: Get information about revoked, verified and CA status of all certificates in the certificate chain
+        title: Retrieve information about revoked, verified and CA status of all certificates in the certificate chain
         query: |
           tls.certificates {
             subject.commonName
@@ -56,4 +56,6 @@ packs:
           tls.certificates {
             subject.commonName
             expiresIn
+            notAfter
+            notBefore
           }
