@@ -87,11 +87,11 @@ packs:
   - uid: mondoo-kubernetes-replicasets-inventory
     name: Mondoo Kubernetes ReplicaSets Inventory
     filters:
-      - asset.platform == "k8s-replicasetset"
+      - asset.platform == "k8s-replicaset"
     queries:
-      - uid: k8s-replicasetset
+      - uid: k8s-replicaset
         title: Gather ReplicaSet Information
         query: |
-          k8s.replicasetset { * }
+          k8s.replicaset { * }
 
 
