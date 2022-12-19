@@ -2,7 +2,7 @@ packs:
   - uid: mondoo-macos-incident-response
     name: Mondoo macOS Incident Response
     tags:
-      mondoo.com/platform: macos
+      mondoo.com/platform: macos,host
       mondoo.com/category: security
     filters:
       - asset.platform == "macos"

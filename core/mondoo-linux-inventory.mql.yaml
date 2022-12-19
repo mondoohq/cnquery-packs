@@ -2,7 +2,7 @@ packs:
   - uid: mondoo-linux-inventory
     name: Mondoo Linux Inventory Pack
     tags:
-      mondoo.com/platform: linux
+      mondoo.com/platform: linux,host
       mondoo.com/category: best-practices
     docs:
       desc: |

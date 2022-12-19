@@ -2,7 +2,7 @@ packs:
   - uid: mondoo-macos-inventory
     name: Mondoo macOS Inventory Pack
     tags:
-      mondoo.com/platform: macos
+      mondoo.com/platform: macos,host
       mondoo.com/category: best-practices
     docs:
       desc: |

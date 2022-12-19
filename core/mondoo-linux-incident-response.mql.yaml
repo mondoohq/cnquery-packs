@@ -2,7 +2,7 @@ packs:
   - uid: mondoo-linux-incident-response
     name: Mondoo Linux Incident Response
     tags:
-      mondoo.com/platform: linux
+      mondoo.com/platform: linux,host
       mondoo.com/category: security
     filters:
       - asset.family.contains("linux")
