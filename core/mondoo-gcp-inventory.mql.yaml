@@ -55,7 +55,7 @@ packs:
         title: Gather a count of GCP compute instances in a GCP project
         docs: 
           desc: |
-            This query gathers a count of running GCP compute instances running in a GCP project
+            This query gathers a count of running GCP compute instances in a GCP project
         query: gcp.compute.instances.where( status == "RUNNING" ).length
       - uid: mondoo-asset-inventory-gcp-compute-instances-data
         title: Gather data from all running GCP compute instances in a GCP project
