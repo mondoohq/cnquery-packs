@@ -9,30 +9,35 @@ packs:
         The Mondoo GCP Inventory query pack gathers information about GCP projects for asset inventory.
     filters:
       - asset.platform == "gcp"
+    queries:
       - uid: mondoo-asset-inventory-gcp-project-info
         title: Gather GCP Project Information
-        query: gcp.project { name id number state labels }
+        query: |
+          gcp.project { 
+            name
+            id
+            number
+            state
+            labels
+          }
       - uid: mondoo-asset-inventory-gcp-project-owners
         title: Gather data for all owners of the GCP project
         docs:
           desc: |
             This query gathers data for all owners of the GCP project
-        query: |
-          gcp.project.iamPolicy.where( role == "roles/owner" ) { * }
+        query: gcp.project.iamPolicy.where( role == "roles/owner" ) { * }
       - uid: mondoo-asset-inventory-gcp-project-editors
         title: Gather data for all editors of the GCP project
         docs:
           desc: |
             This query gathers data for all editors of the GCP project
-        query: |
-          gcp.project.iamPolicy.where( role == "roles/editors" ) { * }
+        query: gcp.project.iamPolicy.where( role == "roles/editors" ) { * }
       - uid: mondoo-asset-inventory-gcp-iam-roles
         title: Gather list of all IAM Policy roles for the GCP project
         docs:
           desc: |
             This query gathers a list of all roles defined for a GCP project
-        query: |
-          gcp.project.iamPolicy { role }
+        query: gcp.project.iamPolicy { role }
       - uid: mondoo-asset-inventory-gcp-enabled-services
         title: Gather all services enabled in the GCP project 
         docs: 
@@ -44,13 +49,13 @@ packs:
         docs: 
           desc: |
             This query gathers a count of GKE clusters running in a GCP project
-        query: gcp.project.clusters.length
+        query: gcp.project.gke.clusters.length
       - uid: mondoo-asset-inventory-gcp-gke-clusters-data
         title: Gather data on GKE clusters
         docs: 
           desc: |
             This query gathers all of the configuration data for GKE clusters within a project
-        query: gcp.project.clusters { * }
+        query: gcp.project.gke.clusters { * }
       - uid: mondoo-asset-inventory-gcp-compute-instances-count
         title: Gather a count of GCP compute instances in a GCP project
         docs: 
@@ -82,4 +87,4 @@ packs:
         docs: 
           desc: |
             This query gathers the data for all GCP compute networks configured in a GCP project
-        query: gcp.compute.networks {*}
+        query: gcp.compute.networks { * }
