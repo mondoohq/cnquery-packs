@@ -1,6 +1,7 @@
 packs:
   - uid: mondoo-github-inventory-org
     name: GitHub Organization Inventory Pack by Mondoo
+    version: 1.0.0
     tags:
       mondoo.com/platform: github,saas
       mondoo.com/category: best-practices
