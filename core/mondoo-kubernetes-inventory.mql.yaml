@@ -76,6 +76,7 @@ packs:
           k8s.job { * }
   - uid: mondoo-kubernetes-daemonsets-inventory
     name: Mondoo Kubernetes DaemonSets Inventory
+    version: 1.0.0
     filters:
       - asset.platform == "k8s-daemonset"
     queries:
@@ -85,6 +86,7 @@ packs:
           k8s.daemonset { * }
   - uid: mondoo-kubernetes-statefulsets-inventory
     name: Mondoo Kubernetes StatefulSets Inventory
+    version: 1.0.0
     filters:
       - asset.platform == "k8s-statefulset"
     queries:
@@ -94,6 +96,7 @@ packs:
           k8s.statefulset { * }
   - uid: mondoo-kubernetes-replicasets-inventory
     name: Mondoo Kubernetes ReplicaSets Inventory
+    version: 1.0.0
     filters:
       - asset.platform == "k8s-replicaset"
     queries:
