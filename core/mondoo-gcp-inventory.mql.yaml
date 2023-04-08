@@ -73,7 +73,7 @@ packs:
             This query retrieves the data for all running GCP compute instances in a GCP project
         query: gcp.compute.instances.where( status == "RUNNING" ) { * }
       - uid: mondoo-asset-inventory-gcp-compute-instances-public
-        title: Retrieve data on public GCP Compute instances
+        title: Retrieve data on public GCP Compute Engine instances
         docs:
           desc: |
             This query retrieves the data for all GCP compute instances that have been configured with an external IP address. 
