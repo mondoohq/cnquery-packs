@@ -55,7 +55,7 @@ packs:
         title: Retrieve data on all attached IAM Policies
         docs:
           desc: |
-            This query retrieves all IAM policies attached to a User, Group, or Role.
+            This query retrieves all IAM policies attached to a user, group, or role.
         query: |
           aws.iam.policies.
             where( attachmentCount > 0 ) { 
