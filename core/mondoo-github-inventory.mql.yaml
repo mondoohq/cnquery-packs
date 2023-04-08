@@ -12,7 +12,7 @@ packs:
       desc: |
         ### Overview
 
-        The GitHub Organization Inventory Pack by Mondoo query pack retrieves configuration data about GitHub organization.
+        The GitHub Organization Inventory Pack by Mondoo query pack retrieves configuration data about GitHub organizations.
 
         ### Prerequisites
 
