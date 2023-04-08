@@ -16,7 +16,7 @@ packs:
         query: |
           k8s.serverVersion
       - uid: role-bindings-with-cluster-admin-permissions
-        title: Retrieve Role Bindings with cluster-admin Permissions
+        title: Retrieve role bindings with cluster-admin permissions
         query: |
           k8s.rolebindings.where(roleRef["kind"] == "ClusterRole" && roleRef["name"] == "cluster-admin") {
             name
