@@ -48,7 +48,7 @@ packs:
             subject.commonName
           }
       - uid: mondoo-ssl-tls-certificate-incident-response-is-revoked
-        title: Retrieve revoked, verified and CA status of all certificates in the certificate chain
+        title: Retrieve revoked, verified, and CA status of all certificates in the certificate chain
         query: |
           tls.certificates {
             subject.commonName

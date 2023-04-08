@@ -26,19 +26,19 @@ packs:
       - asset.platform == "kubernetes" || asset.platform == "k8s-cluster"
     queries:
       - uid: k8s-cluster-version
-        title: Retrieve Kubernetes Cluster Version
+        title: Retrieve Kubernetes cluster version
         query: |
           k8s.serverVersion
       - uid: k8s-cluster-namespaces
-        title: Retrieve Kubernetes Cluster Namespaces
+        title: Retrieve Kubernetes cluster namespaces
         query: |
           k8s.namespaces{ * }
       - uid: k8s-cluster-nodes
-        title: Retrieve Cluster Nodes
+        title: Retrieve cluster modes
         query: |
           k8s.nodes { * }
       - uid: k8s-cluster-clusterroles
-        title: Retrieve Cluster RBAC ClusterRoles
+        title: Retrieve cluster RBAC ClusterRoles
         query: |
           k8s.clusterroles { * }      
   - uid: mondoo-kubernetes-pods-inventory
@@ -54,11 +54,11 @@ packs:
       - asset.platform == "k8s-pod"
     queries:
       - uid: k8s-pod
-        title: Retrieve Pod Information
+        title: Retrieve Pod information
         query: |
           k8s.pod { * }
       - uid: k8s-pod-container
-        title: Retrieve Container Information
+        title: Retrieve container information
         query: |
           k8s.pod.containers { * }
   - uid: mondoo-kubernetes-deployments-inventory
@@ -74,11 +74,11 @@ packs:
       - asset.platform == "k8s-deployment"
     queries:
       - uid: k8s-deployment
-        title: Retrieve Deployment Information
+        title: Retrieve deployment information
         query: |
           k8s.deployment { * }
       - uid: k8s-deployment-container
-        title: Retrieve Container Information
+        title: Retrieve container information
         query: |
           k8s.deployment.containers { * }
   - uid: mondoo-kubernetes-cronjobs-inventory
@@ -94,11 +94,11 @@ packs:
       - asset.platform == "k8s-cronjob"
     queries:
       - uid: k8s-cronjob
-        title: Retrieve CronJob Information
+        title: Retrieve CronJob information
         query: |
           k8s.cronjob { * }
       - uid: k8s-cronjob-container
-        title: Retrieve Container Information
+        title: Retrieve container information
         query: |
           k8s.cronjob.containers { * }
   - uid: mondoo-kubernetes-jobs-inventory
@@ -114,11 +114,11 @@ packs:
       - asset.platform == "k8s-job"
     queries:
       - uid: k8s-job
-        title: Retrieve Job Information
+        title: Retrieve Job information
         query: |
           k8s.job { * }
       - uid: k8s-job-container
-        title: Retrieve Container Information
+        title: Retrieve container information
         query: |
           k8s.job.containers { * }
   - uid: mondoo-kubernetes-daemonsets-inventory
@@ -134,11 +134,11 @@ packs:
       - asset.platform == "k8s-daemonset"
     queries:
       - uid: k8s-daemonset
-        title: Retrieve DaemonSet Information
+        title: Retrieve DaemonSet information
         query: |
           k8s.daemonset { * }
       - uid: k8s-daemonset-container
-        title: Retrieve Container Information
+        title: Retrieve container information
         query: |
           k8s.daemonset.containers { * }
   - uid: mondoo-kubernetes-statefulsets-inventory
@@ -154,11 +154,11 @@ packs:
       - asset.platform == "k8s-statefulset"
     queries:
       - uid: k8s-statefulset
-        title: Retrieve StatefulSet Information
+        title: Retrieve StatefulSet information
         query: |
           k8s.statefulset { * }
       - uid: k8s-statefulset-container
-        title: Retrieve Container Information
+        title: Retrieve Container information
         query: |
           k8s.statefulset.containers { * }
   - uid: mondoo-kubernetes-replicasets-inventory
@@ -174,10 +174,10 @@ packs:
       - asset.platform == "k8s-replicaset"
     queries:
       - uid: k8s-replicaset
-        title: Retrieve ReplicaSet Information
+        title: Retrieve ReplicaSet information
         query: |
           k8s.replicaset { * }
       - uid: k8s-replicaset-container
-        title: Retrieve Container Information
+        title: Retrieve container information
         query: |
           k8s.replicaset.containers { * }

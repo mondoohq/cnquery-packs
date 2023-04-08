@@ -25,7 +25,7 @@ packs:
             roleRef
           }
       - uid: clusterrole-bindings-with-cluster-admin-permissions
-        title: Retrieve ClusterRole Bindings with cluster-admin Permissions
+        title: Retrieve ClusterRoleBindings with cluster-admin permissions
         query: |
           k8s.clusterrolebindings.where(roleRef["kind"] == "ClusterRole" && roleRef["name"] == "cluster-admin") {
             name
@@ -59,7 +59,7 @@ packs:
             }
           }
       - uid: k8s-pod-container
-        title: Retrieve Container Image Information
+        title: Retrieve container image information
         tags:
           mondoo.com/platform: kubernetes
           mondoo.com/category: security
