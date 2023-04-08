@@ -45,7 +45,7 @@ packs:
       - asset.platform == "k8s-pod"
     queries:
       - uid: k8s-pod-security-context
-        title: Retrieve Pods Security Context
+        title: Retrieve Pods' Security Context
         query: |
           k8s.pod {
             ephemeralContainers {
