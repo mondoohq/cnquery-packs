@@ -76,7 +76,7 @@ packs:
         title: Retrieve data on public GCP Compute Engine instances
         docs:
           desc: |
-            This query retrieves the data for all GCP compute instances that have been configured with an external IP address. 
+            This query retrieves the data for all GCP Compute Engine instances that have been configured with an external IP address. 
         query: |
           gcp.compute.instances
             .where( networkInterfaces[0]['accessConfigs'][0]['name'] == "External NAT" ) { * }
