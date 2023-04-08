@@ -97,7 +97,7 @@ packs:
               attachedRoles 
             }
       - uid: mondoo-incident-response-aws-iam-full-access
-        title: Retrieve data on IAM Users, Groups, and Roles where any 'FullAccess' policy is attached
+        title: Retrieve data on IAM users, groups, and roles to which any 'FullAccess' policy is attached
         docs:
           desc: |
             This query retrieves all IAM users, croups, and roles that have any one of the AWS FullAccess roles attached.
