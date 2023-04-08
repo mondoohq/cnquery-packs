@@ -95,7 +95,7 @@ packs:
         title: Retrieve GitHub Organization private repositories
         docs: 
           desc: |
-            This query retrieves all of the public repositories within the GitHub organization. The query returns the repo's name and returns whether the default branch is [protected](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/defining-the-mergeability-of-pull-requests/about-protected-branches) using protection rules.
+            This query retrieves all of the public repositories within the GitHub organization. The query returns the repo's name and whether the default branch is [protected](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/defining-the-mergeability-of-pull-requests/about-protected-branches) using protection rules.
         query: |
           github.organization.repositories.
             where( private == false ) { 
