@@ -87,7 +87,7 @@ packs:
             This query retrieves a count of GCP compute networks configured in a GCP project
         query: gcp.compute.networks.length
       - uid: mondoo-asset-inventory-gcp-compute-networks-data
-        title: Retrieve data for all GCP compute networks in a GCP project
+        title: Retrieve data for all GCP Compute Engine networks in a GCP project
         docs: 
           desc: |
             This query retrieves the data for all GCP compute networks configured in a GCP project
