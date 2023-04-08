@@ -90,5 +90,5 @@ packs:
         title: Retrieve data for all GCP Compute Engine networks in a GCP project
         docs: 
           desc: |
-            This query retrieves the data for all GCP compute networks configured in a GCP project
+            This query retrieves the data for all GCP Compute Engine networks configured in a GCP project.
         query: gcp.compute.networks { * }
