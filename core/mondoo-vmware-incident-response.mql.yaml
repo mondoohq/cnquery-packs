@@ -26,7 +26,7 @@ packs:
 
         Our goal is to build policies that are simple to deploy, accurate, and actionable. 
         
-        If you have any suggestions on improving this policy, or if you need support, [join the community](https://github.com/orgs/mondoohq/discussions) in GitHub Discussions.
+        If you have any suggestions for improving this policy, or if you need support, [join the Mondoo community](https://github.com/orgs/mondoohq/discussions) in GitHub Discussions.
     filters:
       - asset.platform == "vmware-esxi"
     queries:
