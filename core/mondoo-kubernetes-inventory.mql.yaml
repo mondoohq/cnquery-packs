@@ -21,7 +21,7 @@ packs:
         ## Join the community!
         Our goal is to build query packs that are simple to deploy, and provide accurate and useful data. 
         
-        If you have any suggestions on how to improve this query pack, or if you need support, [join the community](https://github.com/orgs/mondoohq/discussions) in GitHub Discussions. 
+        If you have any suggestions on improving this query pack, or if you need support, [join the community](https://github.com/orgs/mondoohq/discussions) in GitHub Discussions. 
     filters:
       - asset.platform == "kubernetes" || asset.platform == "k8s-cluster"
     queries:
@@ -181,5 +181,3 @@ packs:
         title: Retrieve Container Information
         query: |
           k8s.replicaset.containers { * }
-
-

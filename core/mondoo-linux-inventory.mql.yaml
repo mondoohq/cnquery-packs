@@ -13,7 +13,7 @@ packs:
         The Linux Inventory Pack by Mondoo is designed to retrieve data about Linux hosts for asset inventory. 
 
         ## Local scan
-        To run this pack locally on a linux host:
+        To run this pack locally on a Linux host:
 
         ```bash
         cnquery scan local -f mondoo-linux-inventory.mql.yaml
@@ -29,7 +29,7 @@ packs:
         ## Join the community!
         Our goal is to build query packs that are simple to deploy, and provide accurate and useful data. 
         
-        If you have any suggestions on how to improve this query pack, or if you need support, [join the community](https://github.com/orgs/mondoohq/discussions) in GitHub Discussions. 
+        If you have any suggestions on improving this query pack, or if you need support, [join the community](https://github.com/orgs/mondoohq/discussions) in GitHub Discussions. 
     filters:
       - asset.family.contains("linux")
     queries:

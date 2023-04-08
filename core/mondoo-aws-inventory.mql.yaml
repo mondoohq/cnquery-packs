@@ -55,7 +55,7 @@ packs:
         title: Retrieve data on all attached IAM Policies
         docs:
           desc: |
-            This query retrieves all IAM policies that are attached to either a User, Group, or Role.
+            This query retrieves all IAM policies attached to a User, Group, or Role.
         query: |
           aws.iam.policies.
             where( attachmentCount > 0 ) { 
@@ -182,6 +182,3 @@ packs:
       - uid: mondoo-asset-inventory-aws-cloudtrail-trails
         title: Retrieve the configuration for all AWS CloudTrail trails
         query: aws.cloudtrail { trails {*}}
-
-
-          

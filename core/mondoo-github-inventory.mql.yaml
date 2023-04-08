@@ -81,7 +81,7 @@ packs:
       desc: |
         ### Overview
 
-        The Mondoo GitHub User Inventory query pack retrieves configuration data about GitHub user.
+        The Mondoo GitHub User Inventory query pack retrieves configuration data about GitHub users.
 
         ### Prerequisites
 
@@ -150,7 +150,7 @@ packs:
       desc: |
         ### Overview
 
-        The Mondoo GitHub Repository Inventory query pack retrieves configuration data about GitHub repository.
+        The Mondoo GitHub Repository Inventory query pack retrieves configuration data about GitHub repositories.
 
         ### Prerequisites
 
