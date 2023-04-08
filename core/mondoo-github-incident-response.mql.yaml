@@ -12,7 +12,7 @@ packs:
       desc: |
         ### Overview
 
-        The GitHub Organization Incident Response Pack by Mondoo query pack retrieves configuration data about GitHub Organizations and the repositories within for investigation during a security incident.
+        The GitHub Organization Incident Response Pack by Mondoo query pack retrieves configuration data about GitHub organizations and the repositories within them for investigation during a security incident.
 
         ### Prerequisites
 
