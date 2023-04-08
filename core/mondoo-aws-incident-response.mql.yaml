@@ -85,7 +85,7 @@ packs:
               accessKey2LastRotated
             }
       - uid: mondoo-incident-response-aws-iam-administrator-access
-        title: Retrieve data on IAM Users, Groups, and Roles where AdministratorAccess policy is attached
+        title: Retrieve data on IAM users, groups, and roles to which the AdministratorAccess policy is attached
         docs:
           desc: |
             This query retrieves all IAM users, groups, and roles with the `AdministratorAccess` role attached.
