@@ -88,7 +88,7 @@ packs:
         title: Retrieve data on IAM Users, Groups, and Roles where AdministratorAccess policy is attached
         docs:
           desc: |
-            This query retrieves all IAM Users, Groups, and Roles with the `AdministratorAccess` role attached.
+            This query retrieves all IAM users, groups, and roles with the `AdministratorAccess` role attached.
         query: |
           aws.iam.attachedPolicies.
             where( arn == "arn:aws:iam::aws:policy/AdministratorAccess" ) { 
