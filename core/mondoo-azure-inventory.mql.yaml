@@ -17,6 +17,9 @@ packs:
     queries:
       - uid: mondoo-asset-inventory-azure-subscription-id
         title: Retrieve Azure subscription ID
+        docs:
+          desc: |
+            This query retrieves the Azure subscription id
         query: azure.subscription.id
       - uid: mondoo-asset-inventory-azure-networks
         title: Retrieve data on all securityGroups
@@ -28,14 +31,14 @@ packs:
         title: Retrieve data for all Azure roleDefinitions
         docs:
           desc: |
-            This query retrieves data for all IAM users
-        query: azure.subscription.authorizationService.roleDefinitions { * } 
+            This query retrieves data for all Role definitions in the subscription
+        query: azure.subscription.authorizationService.roleDefinitions {*} 
       - uid: mondoo-asset-inventory-azure-cloudDefender
         title: Retrieve data for all Azure CloudDefender
         docs:
           desc: |
             This query retrieves data for cloudDefender
-        query: azure.subscription.cloudDefender { * }
+        query: azure.subscription.cloudDefender {*}
       - uid: mondoo-asset-inventory-azure-storageAccounts
         title: Retrieve data for all Azure storage accounts
         docs:
@@ -192,3 +195,21 @@ packs:
           desc: |
             This query retrieves data for all compute disks available in the subscription
         query: azure.subscription.compute.disks {*}
+      - uid: mondoo-asset-inventory-azure-network-interfaces
+        title: Retrieve data for all network interfaces
+        docs:
+          desc: |
+            This query retrieves data for all network interfaces
+        query: azure.subscription.network.interfaces {*}
+      - uid: mondoo-asset-inventory-azure-resourcegroups
+        title: Retrieve data for all resource groups inside the subscription
+        docs:
+          desc: |
+            This query retrieves data for all resource groups inside the subscription
+        query: azure.subscription.resourceGroups {*}
+      - uid: mondoo-asset-inventory-azure-resources
+        title: Retrieve data for all resources inside the subscription
+        docs:
+          desc: |
+            This query retrieves data for all resources inside the subscription
+        query: azure.subscription.resources {*}
