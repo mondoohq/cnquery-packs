@@ -49,7 +49,7 @@ packs:
         title: Retrieve all installed Windows hotfixes
         mql: windows.hotfixes { * }
       - uid: mondoo-windows-packages
-        title: Retrieve all installed Windows Features
+        title: Retrieve all installed Windows features
         mql: windows.features
       - uid: mondoo-windows-running-services
         title: Retrieve data on running services
