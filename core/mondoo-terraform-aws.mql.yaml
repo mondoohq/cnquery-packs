@@ -13,6 +13,7 @@ packs:
         This inventory collects data from AWS Terraform state files and AWS accounts to build an asset inventory of resources managed by Terraform. 
     groups:
       - title: AWS Terraform Inventory 
+        filters: asset.platform == "terraform-state" && terraform.state.resources.any( providerName == "registry.terraform.io/hashicorp/aws" )
         checks:
           - uid: mondoo-asset-inventory-aws-default-network-acl
           - uid: mondoo-asset-inventory-aws-default-route-table
@@ -21,29 +22,13 @@ packs:
     queries:
       - uid: mondoo-asset-inventory-aws-default-network-acl
         title: AWS Default Network ACLs 
-        variants:
-          - uid: mondoo-asset-inventory-aws-default-network-acl-terraform-state
-      - uid: mondoo-asset-inventory-aws-default-network-acl-terraform-state
-        filters: asset.platform == "terraform-state" && terraform.state.resources.any( providerName == "registry.terraform.io/hashicorp/aws" )
         mql: terraform.state.resources.where( type == "aws_default_network_acl" ) { values['arn'] }
       - uid: mondoo-asset-inventory-aws-default-route-table
         title: AWS default route tables 
-        variants:
-          - uid: mondoo-asset-inventory-aws-default-route-table-terraform-state
-      - uid: mondoo-asset-inventory-aws-default-route-table-terraform-state
-        filters: asset.platform == "terraform-state" && terraform.state.resources.any( providerName == "registry.terraform.io/hashicorp/aws" )
         mql: terraform.state.resources.where( type == "aws_default_route_table" ) { values['arn'] }
       - uid: mondoo-asset-inventory-aws-default-security-group
         title: AWS Default security group 
-        variants:
-          - uid: mondoo-asset-inventory-aws-default-security-group-terraform-state 
-      - uid: mondoo-asset-inventory-aws-default-security-group-terraform-state  
-        filters: asset.platform == "terraform-state" && terraform.state.resources.any( providerName == "registry.terraform.io/hashicorp/aws" )
         mql: terraform.state.resources.where( type == "aws_default_security_group" ) { values['arn'] }
       - uid: mondoo-asset-inventory-aws-internet-gateway
         title: AWS Internet Gateways
-        variants:
-          - uid: mondoo-asset-inventory-aws-internet-gateway-terraform-state
-      - uid: mondoo-asset-inventory-aws-internet-gateway
-        filters: asset.platform == "terraform-state" && terraform.state.resources.any( providerName == "registry.terraform.io/hashicorp/aws" )
         mql: terraform.state.resources.where( type == "aws_internet_gateway" ) { values['arn'] }
