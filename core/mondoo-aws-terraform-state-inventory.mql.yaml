@@ -1,0 +1,42 @@
+packs:
+  - uid: mondoo-asset-inventory-terraform-aws
+    name: Terraform AWS Asset Inventory Pack
+    version: 1.0.0
+    authors:
+      - name: Mondoo, Inc
+        email: hello@mondoo.com
+    tags:
+      mondoo.com/platform: aws,cloud,terraform
+      mondoo.com/category: asset-inventory
+    docs:
+      desc: |
+        This inventory collects data from AWS Terraform state files and AWS accounts to build an asset inventory of resources managed by Terraform. 
+    groups:
+      - title: AWS Terraform State Inventory 
+        filters: asset.platform == "terraform-state" && terraform.state.resources.any( providerName == "registry.terraform.io/hashicorp/aws" )
+        queries:
+          - uid: mondoo-asset-inventory-terraform-state-aws-instance
+          - uid: mondoo-asset-inventory-terraform-state-aws-s3-bucket
+          - uid: mondoo-asset-inventory-terraform-state-aws-vpc
+          - uid: mondoo-asset-inventory-terraform-state-aws-security-group
+          - uid: mondoo-asset-inventory-terraform-state-aws-db-instance
+          - uid: mondoo-asset-inventory-terraform-state-aws-db-cluster
+    queries:
+      - uid: mondoo-asset-inventory-terraform-state-aws-instance
+        title: AWS EC2 Instances managed by Terraform
+        mql: terraform.state.resources.where( type == "aws_instance" ) { values['arn'] }
+      - uid: mondoo-asset-inventory-terraform-state-aws-s3-bucket
+        title: AWS S3 Buckets managed by Terraform
+        mql: terraform.state.resources.where( type == "aws_s3_bucket" ) { values['arn'] }
+      - uid: mondoo-asset-inventory-terraform-state-aws-vpc
+        title: AWS VPCs managed by Terraform
+        mql: terraform.state.resources.where( type == "aws_vpc" ) { values['arn'] }
+      - uid: mondoo-asset-inventory-terraform-state-aws-security-group
+        title: AWS Security Groups managed by Terraform
+        mql: terraform.state.resources.where( type == "aws_security_group" ) { values['arn'] }
+      - uid: mondoo-asset-inventory-terraform-state-aws-db-instance
+        title: AWS RDS DB Instances managed by Terraform
+        mql: terraform.state.resources.where( type == "aws_db_instance" ) { values['arn'] }
+      - uid: mondoo-asset-inventory-terraform-state-aws-db-cluster
+        title: AWS RDS DB Clusters managed by Terraform
+        mql: terraform.state.resources.where( type == "aws_rds_cluster" ) { values['arn'] }
