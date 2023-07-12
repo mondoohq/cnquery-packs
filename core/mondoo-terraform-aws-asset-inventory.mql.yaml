@@ -1,0 +1,53 @@
+packs:
+  - uid: mondoo-asset-inventory-terraform-aws
+    name: Terraform AWS Asset Inventory Pack
+    version: 1.0.0
+    authors:
+      - name: Mondoo, Inc
+        email: hello@mondoo.com
+    tags:
+      mondoo.com/platform: aws,cloud,terraform
+      mondoo.com/category: asset-inventory
+    docs:
+      desc: |
+        This inventory collects data from AWS Terraform state files and AWS accounts to build an asset inventory of resources managed by Terraform. 
+    groups:
+      - title: AWS Terraform Inventory 
+        queries:
+          - uid: mondoo-asset-inventory-aws-vpcs
+          - uid: mondoo-asset-inventory-aws-instances
+          - uid: mondoo-asset-inventory-aws-s3-buckets
+    queries:
+      - uid: mondoo-asset-inventory-aws-vpcs
+        title: AWS VPCs
+        variants:
+          - uid: mondoo-asset-inventory-aws-vpcs-terraform-state
+          - uid: mondoo-asset-inventory-aws-vpcs-runtime
+      - uid: mondoo-asset-inventory-aws-vpcs-terraform-state
+        filters: asset.platform == "terraform-state" && terraform.state.resources.any( providerName == "registry.terraform.io/hashicorp/aws" )
+        mql: terraform.state.resources.where( type == "aws_vpc" ) { values['arn'] }
+      - uid: mondoo-asset-inventory-aws-vpcs-runtime
+        filters: asset.platform == "aws"
+        mql: aws.vpcs {arn}
+      - uid: mondoo-asset-inventory-aws-instances
+        title: AWS EC2 Instances
+        variants:
+          - uid: mondoo-asset-inventory-aws-instances-terraform-state
+          - uid: mondoo-asset-inventory-aws-instances-runtime
+      - uid: mondoo-asset-inventory-aws-instances-terraform-state
+        filters: asset.platform == "terraform-state" && terraform.state.resources.any( providerName == "registry.terraform.io/hashicorp/aws" )
+        mql: terraform.state.resources.where( type == "aws_instance" ) { values['arn'] }
+      - uid: mondoo-asset-inventory-aws-instances-runtime
+        filters: asset.platform == "aws"
+        mql: aws.ec2.instances {arn}
+      - uid: mondoo-asset-inventory-aws-s3-buckets
+        title: AWS S3 Buckets
+        variants:
+          - uid: mondoo-asset-inventory-aws-s3-buckets-terraform-state
+          - uid: mondoo-asset-inventory-aws-s3-buckets-runtime
+      - uid: mondoo-asset-inventory-aws-s3-buckets-terraform-state
+        filters: asset.platform == "terraform-state" && terraform.state.resources.any( providerName == "registry.terraform.io/hashicorp/aws" )
+        mql: terraform.state.resources.where( type == "aws_s3_bucket" ) { values['arn'] }
+      - uid: mondoo-asset-inventory-aws-s3-buckets-runtime
+        filters: asset.platform == "aws"
+        mql: aws.s3.buckets {arn}

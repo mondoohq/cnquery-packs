@@ -1,0 +1,53 @@
+packs:
+  - uid: mondoo-asset-inventory-terraform-gcp
+    name: Terraform GCP Asset Inventory Pack
+    version: 1.0.0
+    authors:
+      - name: Mondoo, Inc
+        email: hello@mondoo.com
+    tags:
+      mondoo.com/platform: gcp,cloud,terraform
+      mondoo.com/category: asset-inventory
+    docs:
+      desc: |
+        This inventory collects data from GCP Terraform state files and GCP accounts to build an asset inventory of resources managed by Terraform. 
+    groups:
+      - title: GCP Terraform Inventory 
+        queries:
+          - uid: mondoo-asset-inventory-google-compute-instance
+          - uid: mondoo-asset-inventory-google-storage-bucket
+          - uid: mondoo-asset-inventory-google-compute-network
+    queries:
+      - uid: mondoo-asset-inventory-google-compute-network
+        title: GCP VPCs
+        variants:
+          - uid: mondoo-asset-inventory-google-compute-network-terraform-state
+          - uid: mondoo-asset-inventory-google-compute-network-runtime
+      - uid: mondoo-asset-inventory-google-compute-network-terraform-state
+        filters: asset.platform == "terraform-state" && terraform.state.resources.any( providerName == "registry.terraform.io/hashicorp/google" )
+        mql: terraform.state.resources.where( type == "google_compute_network" ) { values['id'] }
+      - uid: mondoo-asset-inventory-google-compute-network-runtime
+        filters: asset.platform == "gcp"
+        mql: gcp.project.computeService.networks {id}
+      - uid: mondoo-asset-inventory-google-compute-instance
+        title: GCP Compuate Instances
+        variants:
+          - uid: mondoo-asset-inventory-google-compute-instance-terraform-state
+          - uid: mondoo-asset-inventory-google-compute-instance-runtime
+      - uid: mondoo-asset-inventory-google-compute-instance-terraform-state
+        filters: asset.platform == "terraform-state" && terraform.state.resources.any( providerName == "registry.terraform.io/hashicorp/google" )
+        mql: terraform.state.resources.where( type == "google_compute_instance" ) { values['id'] }
+      - uid: mondoo-asset-inventory-google-compute-instance-runtime
+        filters: asset.platform == "gcp"
+        mql: gcp.project.computeService.instances {id}
+      - uid: mondoo-asset-inventory-google-storage-bucket
+        title: GCP Storage Buckets
+        variants:
+          - uid: mondoo-asset-inventory-google-storage-bucket-terraform-state
+          - uid: mondoo-asset-inventory-google-storage-bucket-runtime
+      - uid: mondoo-asset-inventory-google-storage-bucket-terraform-state
+        filters: asset.platform == "terraform-state" && terraform.state.resources.any( providerName == "registry.terraform.io/hashicorp/google" )
+        mql: terraform.state.resources.where( type == "google_storage_bucket" ) { values['url'] }
+      - uid: mondoo-asset-inventory-google-storage-bucket-runtime
+        filters: asset.platform == "gcp"
+        mql: gcp.project.storage.buckets {id}
