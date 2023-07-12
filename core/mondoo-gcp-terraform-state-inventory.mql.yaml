@@ -1,0 +1,38 @@
+packs:
+  - uid: mondoo-asset-inventory-terraform-gcp
+    name: GCP Terraform State Asset Inventory
+    version: 1.0.0
+    authors:
+      - name: Mondoo, Inc
+        email: hello@mondoo.com
+    tags:
+      mondoo.com/platform: gcp,cloud,terraform
+      mondoo.com/category: asset-inventory
+    docs:
+      desc: |
+        This inventory collects data from GCP Terraform state files to build an asset inventory of resources managed by Terraform. 
+    groups:
+      - title: GCP Terraform State Inventory 
+        filters: asset.platform == "terraform-state" && terraform.state.resources.any( providerName == "registry.terraform.io/hashicorp/google" )
+        queries:
+          - uid: mondoo-asset-inventory-terraform-state-google-compute-instance
+          - uid: mondoo-asset-inventory-terraform-state-google-storage-bucket
+          - uid: mondoo-asset-inventory-terraform-state-google-compute-network
+          - uid: mondoo-asset-inventory-terraform-state-google-compute-security-policy
+          - uid: mondoo-asset-inventory-terraform-state-google-sql-database
+    queries:
+      - uid: mondoo-asset-inventory-terraform-state-google-compute-instance
+        title: Google Compute Instances managed by Terraform
+        mql: terraform.state.resources.where( type == "google_compute_instance" ) { values['id'] }
+      - uid: mondoo-asset-inventory-terraform-state-google-storage-bucket
+        title: Google Storage Buckets managed by Terraform
+        mql: terraform.state.resources.where( type == "google_storage_bucket" ) { values['url'] }
+      - uid: mondoo-asset-inventory-terraform-state-google-compute-network
+        title: Google Compute Networks managed by Terraform
+        mql: terraform.state.resources.where( type == "google_compute_network" ) { values['id'] }
+      - uid: mondoo-asset-inventory-terraform-state-google-compute-security-policy
+        title: Google Compute Security Policies managed by Terraform
+        mql: terraform.state.resources.where( type == "google_compute_security_policy" ) { values['id'] }
+      - uid: mondoo-asset-inventory-terraform-state-google-sql-database
+        title: Google Cloud SQL Instances managed by Terraform
+        mql: terraform.state.resources.where( type == "google_sql_database" ) { values['id'] }
