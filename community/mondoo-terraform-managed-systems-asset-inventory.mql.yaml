@@ -1,0 +1,124 @@
+packs:
+  - uid: mondoo-asset-inventory-terraform-managed-systems
+    name: Terraform Managed Systems Asset Inventory
+    version: 1.0.0
+    authors:
+      - name: Mondoo, Inc
+        email: hello@mondoo.com
+    tags:
+      mondoo.com/platform: cloud,terraform
+      mondoo.com/category: asset-inventory
+    docs:
+      desc: |
+        This inventory builds an asset inventory of systems managed by Terraform. The query pack supports scanning of HashiCorp Terraform state files and cloud runtime environments. Each scan produces data of systems discovered. This data can be used to create a delta between what is in Terraform state and what is in the runtime environment. 
+
+        ## Scan Terraform state  
+
+        Terraform state scanning works with json state files. To create a json state file with Terraform:
+
+        1. Navigate to the Terraform directory:
+        ```bash
+        cd <terraform directory>
+        ```
+        2. Use terraform show command to create a tfstate.json filters:
+        ```bash
+        terraform show -json > tfstate.json
+        ```
+        3. Scan the tfstate.json: 
+        ```
+        cnspec scan terraform state tfstate.json -f core/mondoo-terraform-managed-systems-asset-inventory.mql.yaml
+        ```
+        4. Scan the runtime environment (example: AWS):
+        ```bash
+        cnquery scan aws -f core/mondoo-terraform-managed-systems-asset-inventory.mql.yaml
+        ```
+    groups:
+      - title: Terraform Managed Systems Asset Inventory for AWS
+        queries:
+          - uid: mondoo-asset-inventory-terraform-managed-systems-aws-vpcs
+          - uid: mondoo-asset-inventory-terraform-managed-systems-aws-instances
+          - uid: mondoo-asset-inventory-terraform-managed-systems-aws-s3-buckets
+      - title: Terraform Managed Systems Asset Inventory for Google Cloud
+        queries:
+          - uid: mondoo-asset-inventory-terraform-managed-systems-google-compute-instance
+          - uid: mondoo-asset-inventory-terraform-managed-systems-google-storage-bucket
+          - uid: mondoo-asset-inventory-terraform-managed-systems-google-compute-network
+    queries:
+      - uid: mondoo-asset-inventory-terraform-managed-systems-aws-vpcs
+        title: AWS VPCs
+        variants:
+          - uid: mondoo-asset-inventory-terraform-managed-systems-aws-vpcs-terraform-state
+          - uid: mondoo-asset-inventory-terraform-managed-systems-aws-vpcs-runtime
+      - uid: mondoo-asset-inventory-terraform-managed-systems-aws-vpcs-terraform-state
+        title: AWS VPCs discovered in Terraform state
+        filters: asset.platform == "terraform-state" && terraform.state.resources.any( providerName == "registry.terraform.io/hashicorp/aws" )
+        mql: terraform.state.resources.where( type == "aws_vpc" ) { values['arn'] }
+      - uid: mondoo-asset-inventory-terraform-managed-systems-aws-vpcs-runtime
+        title: AWS VPCs discovered in AWS account
+        filters: asset.platform == "aws"
+        mql: aws.vpcs {arn}
+      - uid: mondoo-asset-inventory-terraform-managed-systems-aws-instances
+        title: AWS EC2 Instances
+        variants:
+          - uid: mondoo-asset-inventory-terraform-managed-systems-aws-instances-terraform-state
+          - uid: mondoo-asset-inventory-terraform-managed-systems-aws-instances-runtime
+      - uid: mondoo-asset-inventory-terraform-managed-systems-aws-instances-terraform-state
+        title: AWS EC2 instances discovered in Terraform state
+        filters: asset.platform == "terraform-state" && terraform.state.resources.any( providerName == "registry.terraform.io/hashicorp/aws" )
+        mql: terraform.state.resources.where( type == "aws_instance" ) { values['arn'] }
+      - uid: mondoo-asset-inventory-terraform-managed-systems-aws-instances-runtime
+        title: AWS EC2 instances discovered in AWS account
+        filters: asset.platform == "aws"
+        mql: aws.ec2.instances {arn}
+      - uid: mondoo-asset-inventory-terraform-managed-systems-aws-s3-buckets
+        title: AWS S3 Buckets
+        variants:
+          - uid: mondoo-asset-inventory-terraform-managed-systems-aws-s3-buckets-terraform-state
+          - uid: mondoo-asset-inventory-terraform-managed-systems-aws-s3-buckets-runtime
+      - uid: mondoo-asset-inventory-terraform-managed-systems-aws-s3-buckets-terraform-state
+        title: AWS S3 buckets discovered in Terraform state
+        filters: asset.platform == "terraform-state" && terraform.state.resources.any( providerName == "registry.terraform.io/hashicorp/aws" )
+        mql: terraform.state.resources.where( type == "aws_s3_bucket" ) { values['arn'] }
+      - uid: mondoo-asset-inventory-terraform-managed-systems-aws-s3-buckets-runtime
+        title: AWS S3 buckets discovered in AWS account
+        filters: asset.platform == "aws"
+        mql: aws.s3.buckets {arn}
+      - uid: mondoo-asset-inventory-terraform-managed-systems-google-compute-network
+        title: GCP VPCs
+        variants:
+          - uid: mondoo-asset-inventory-terraform-managed-systems-google-compute-network-terraform-state
+          - uid: mondoo-asset-inventory-terraform-managed-systems-google-compute-network-runtime
+      - uid: mondoo-asset-inventory-terraform-managed-systems-google-compute-network-terraform-state
+        title: GCP VPCs discovered in Terraform state
+        filters: asset.platform == "terraform-state" && terraform.state.resources.any( providerName == "registry.terraform.io/hashicorp/google" )
+        mql: terraform.state.resources.where( type == "google_compute_network" ) { values['id'] }
+      - uid: mondoo-asset-inventory-terraform-managed-systems-google-compute-network-runtime
+        title: GCP VPCs discovered in Google Cloud account
+        filters: asset.platform == "gcp"
+        mql: gcp.project.computeService.networks {id}
+      - uid: mondoo-asset-inventory-terraform-managed-systems-google-compute-instance
+        title: GCP Compute Instances
+        variants:
+          - uid: mondoo-asset-inventory-terraform-managed-systems-google-compute-instance-terraform-state
+          - uid: mondoo-asset-inventory-terraform-managed-systems-google-compute-instance-runtime
+      - uid: mondoo-asset-inventory-terraform-managed-systems-google-compute-instance-terraform-state
+        title: GCP Compute Instances discovered in Terraform state
+        filters: asset.platform == "terraform-state" && terraform.state.resources.any( providerName == "registry.terraform.io/hashicorp/google" )
+        mql: terraform.state.resources.where( type == "google_compute_instance" ) { values['id'] }
+      - uid: mondoo-asset-inventory-terraform-managed-systems-google-compute-instance-runtime
+        title: GCP Compute Instances discovered in Google Cloud account
+        filters: asset.platform == "gcp"
+        mql: gcp.project.computeService.instances {id}
+      - uid: mondoo-asset-inventory-terraform-managed-systems-google-storage-bucket
+        title: GCP Storage Buckets
+        variants:
+          - uid: mondoo-asset-inventory-terraform-managed-systems-google-storage-bucket-terraform-state
+          - uid: mondoo-asset-inventory-terraform-managed-systems-google-storage-bucket-runtime
+      - uid: mondoo-asset-inventory-terraform-managed-systems-google-storage-bucket-terraform-state
+        title: Google Cloud Storage buckets discovered in Terraform state
+        filters: asset.platform == "terraform-state" && terraform.state.resources.any( providerName == "registry.terraform.io/hashicorp/google" )
+        mql: terraform.state.resources.where( type == "google_storage_bucket" ) { values['url'] }
+      - uid: mondoo-asset-inventory-terraform-managed-systems-google-storage-bucket-runtime
+        title: Google Cloud Storage buckets discovered in Google Cloud account
+        filters: asset.platform == "gcp"
+        mql: gcp.project.storage.buckets {id}
