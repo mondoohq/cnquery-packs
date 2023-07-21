@@ -33,16 +33,16 @@ packs:
     filters:
       - asset.platform.contains("macos")
     queries:
-      - uid: mondoo-macos-machine-model
-        title: Retrieve the machine model
+      - uid: mondoo-macos-machine-model-identifier
+        title: Retrieve the machine model identifer
         mql: |
           parse.json(content: command('system_profiler SPHardwareDataType -json').stdout).params['SPHardwareDataType'].first['machine_model']
-      - uid: mondoo-macos-computer-name
-        title: Retrieve the machine name
+      - uid: mondoo-macos-machine-model-name
+        title: Retrieve the machine model name
         mql: |
           parse.json(content: command('system_profiler SPHardwareDataType -json').stdout).params['SPHardwareDataType'].first['machine_name']
-      - uid: mondoo-macos-model-number
-        title: Retrieve the model number
+      - uid: mondoo-macos-model-part-number
+        title: Retrieve the model part number
         mql: |
           parse.json(content: command('system_profiler SPHardwareDataType -json').stdout).params['SPHardwareDataType'].first['model_number']
       - uid: mondoo-macos-serial-number
