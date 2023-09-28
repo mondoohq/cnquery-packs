@@ -23,13 +23,25 @@ packs:
         docs:
           desc: |
             This query retrieves the Azure subscription id
-        mql: azure.subscription.id
+        mql: azure.subscription.subscriptionId
+      - uid: mondoo-asset-inventory-azure-subscription-name
+        title: Retrieve Azure subscription Name
+        docs:
+          desc: |
+            This query retrieves the Azure subscription name
+        mql: azure.subscription.name
       - uid: mondoo-asset-inventory-azure-roleDefinitions
         title: Retrieve data for all Azure roleDefinitions
         docs:
           desc: |
             This query retrieves data for all Role definitions in the subscription
         mql: azure.subscription.authorization.roleDefinitions
+      - uid: mondoo-asset-inventory-azure-subscription-policies
+        title: Retrieve data for all Azure subscription's policies
+        docs:
+          desc: |
+            This query retrieves data for all Policies in the subscription
+        mql: azure.subscription.subscriptionsPolicies
       - uid: mondoo-asset-inventory-azure-cloudDefender
         title: Retrieve data for all Azure CloudDefender
         docs:
@@ -60,6 +72,12 @@ packs:
           desc: |
             This query retrieves data for all tables in storage accounts
         mql: azure.subscription.storage.accounts { tableProperties }
+      - uid: mondoo-asset-inventory-azure-storageAccounts-queues
+        title: Retrieve data for all queues in Azure storage accounts
+        docs:
+          desc: |
+            This query retrieves data for all queues in storage accounts
+        mql: azure.subscription.storage.accounts {queueProperties}
       - uid: mondoo-asset-inventory-azure-sqlServers
         title: Retrieve data for all Azure SQL Database servers
         docs:
@@ -114,6 +132,24 @@ packs:
           desc: |
             This query retrieves data for all Key Vaults
         mql: azure.subscription.keyVault.vaults
+      - uid: mondoo-asset-inventory-azure-keyVaults-name
+        title: Retrieve data for all Azure Key Vaults Name
+        docs:
+          desc: |
+            This query retrieves data for all Key Vaults name
+        mql: azure.subscription.keyVault.vaults { vaultName }
+      - uid: mondoo-asset-inventory-azure-keyVaults-location
+        title: Retrieve data for all Azure Key Vaults location
+        docs:
+          desc: |
+            This query retrieves data for all Key Vaults location
+        mql: azure.subscription.keyVault.vaults { location }
+      - uid: mondoo-asset-inventory-azure-keyVaults-url
+        title: Retrieve data for all Azure Key Vaults urls
+        docs:
+          desc: |
+            This query retrieves data for all Key Vaults urls
+        mql: azure.subscription.keyVault.vaults { vaultUri }
       - uid: mondoo-asset-inventory-azure-keyVaults-keys
         title: Retrieve data for all Azure Key Vaults keys
         docs:
@@ -126,6 +162,12 @@ packs:
           desc: |
             This query retrieves data for all secrets in Key Vaults
         mql: azure.subscription.keyVault.vaults { secrets }
+      - uid: mondoo-asset-inventory-azure-keyVaults-accessPolicies
+        title: Retrieve data for all Azure Key Vaults access policies
+        docs:
+          desc: |
+            This query retrieves data for all access policies of different objects in Key Vaults
+        mql: azure.subscription.keyVault.vaults { properties["accessPolicies"] }
       - uid: mondoo-asset-inventory-azure-keyVaults-certificates
         title: Retrieve data for all Azure Key Vaults certificates
         docs:
@@ -204,6 +246,24 @@ packs:
           desc: |
             This query retrieves data for all network interfaces
         mql: azure.subscription.network.interfaces
+      - uid: mondoo-asset-inventory-azure-network-securityGroup-defaultrules
+        title: Retrieve data for all default network security group rules
+        docs:
+          desc: |
+            This query retrieves data for all default network security group rules
+        mql: azure.subscription.network.securityGroups { defaultSecurityRules }
+      - uid: mondoo-asset-inventory-azure-network-securityGroup-rules
+        title: Retrieve data for all defined network security group rules
+        docs:
+          desc: |
+            This query retrieves data for all defined network security group rules
+        mql: azure.subscription.network.securityGroups { securityRules }
+      - uid: mondoo-asset-inventory-azure-network-securityGroup-rules-info
+        title: Retrieve detailed data for all defined network security group rules
+        docs:
+          desc: |
+            This query retrieves detailed data for all defined network security group rules
+        mql: azure.subscription.network.securityGroups { securityRules {properties} }
       - uid: mondoo-asset-inventory-azure-resourcegroups
         title: Retrieve data for all resource groups inside the subscription
         docs:
