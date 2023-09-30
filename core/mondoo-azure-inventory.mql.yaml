@@ -277,8 +277,8 @@ packs:
             This query retrieves data for all resources inside the subscription
         mql: azure.subscription.resources
       - uid: mondoo-asset-inventory-azure-mfa-users
-        title: Check that MFA has been activated for all users inside the subscription
+        title: Retrieve all users in the subscription and their MFA status
         docs:
           desc: |
-            This query check that MFA for all users has been activated in the subscription
+            This query Retrieve all users' MFA status in the subscription
         mql: microsoft.security.latestSecureScores.controlScores.one( _['controlName'] == 'MFARegistrationV2' &&  _['score'] == 9)
