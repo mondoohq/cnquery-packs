@@ -282,3 +282,9 @@ packs:
           desc: |
             This query Retrieve all users' MFA status in the subscription
         mql: microsoft.security.latestSecureScores.controlScores.one( _['controlName'] == 'MFARegistrationV2' &&  _['score'] == 9)
+      - uid: mondoo-asset-inventory-azure-activitylogs-alerts
+        title: Retrieve all activity logs alerts the subscription
+        docs:
+          desc: |
+            This query Retrieve all activity logs alerts in the subscription
+        mql: azure.subscription.monitor.activityLog.alerts {*}
