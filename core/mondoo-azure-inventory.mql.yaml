@@ -54,7 +54,7 @@ packs:
             This query retrieves data for all blobs in storage accounts
         mql: azure.subscription.storage.accounts { blobProperties }
       - uid: mondoo-asset-inventory-azure-storageAccounts-tables
-        title: Azure storage accounts tables
+        title: Azure Storage accounts tables
         docs:
           desc: |
             This query retrieves data for all tables in storage accounts
