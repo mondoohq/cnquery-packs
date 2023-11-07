@@ -95,22 +95,22 @@ packs:
 queries:
   - uid: mondoo-asset-count-on-vsphere-cluster-esxi
     title: Retrieve all ESXi hosts
-    query: |
+    mql: |
       vsphere.datacenters { hosts.length }
 
   - uid: mondoo-asset-count-on-vsphere-cluster-vms
     title: Retrieve all VMs from vSphere cluster
-    query: |
+    mql: |
      vsphere.datacenters { vms.length }
 
   - uid: mondoo-asset-count-on-azure
     title: Azure virtual machine count
-    query: |
+    mql: |
       azure.subscription.compute.vms.length
 
   - uid: mondoo-count-users-in-azure
     title: Azure user count
-    query: |
+    mql: |
       microsoft.users.length
 
   - uid: mondoo-asset-count-aws-account-id
@@ -269,65 +269,65 @@ queries:
 
   - uid: mondoo-asset-count-in-windows-domain
     title: Retrieve all computer object from the Windows domain
-    query: |
+    mql: |
       parse.json(content: powershell('$time = (Get-Date).Adddays(-(180));Get-ADComputer -Filter {LastLogonTimeStamp -ge $time} -properties * | select Name,Enabled,OperatingSystem,OperatingSystemVersion,LastLogonDate | ConvertTo-Json').stdout).params
 
   - uid: mondoo-asset-count-gcp-storage-buckets
     title: GCP Project Storage Buckets
-    query: gcp.project.storage.buckets.length
+    mql: gcp.project.storage.buckets.length
 
   - uid: mondoo-asset-count-gcp-compute-instances
     title: GCP Project Compute Instances
-    query: gcp.project.compute.instances.length
+    mql: gcp.project.compute.instances.length
 
   - uid: mondoo-asset-count-gcp-service-accounts
     title: GCP Project Service Accounts
-    query: gcp.project.iam.serviceAccounts.length
+    mql: gcp.project.iam.serviceAccounts.length
 
   - uid: mondoo-asset-count-gcp-gke-clusters
     title: GCP Project GKE Clusters
-    query: gcp.project.gke.clusters.length
+    mql: gcp.project.gke.clusters.length
 
   - uid: mondoo-asset-count-gcp-bigquery-datasets
     title: GCP Project BigQuery Datasets
-    query: gcp.project.bigquery.datasets.length
+    mql: gcp.project.bigquery.datasets.length
 
   - uid: mondoo-asset-count-gcp-cloudfunctions
     title: GCP Project CloudFunctions
-    query: gcp.project.cloudFunctions.length
+    mql: gcp.project.cloudFunctions.length
 
   - uid: mondoo-asset-count-gcp-cloudrun-jobs
     title: GCP Project Cloud Run Jobs
-    query: gcp.project.cloudRun.jobs.length
+    mql: gcp.project.cloudRun.jobs.length
 
   - uid: mondoo-asset-count-gcp-cloudrun-services
     title: GCP Project Cloud Run Services
-    query: gcp.project.cloudRun.services.length
+    mql: gcp.project.cloudRun.services.length
 
   - uid: mondoo-asset-count-gcp-cloudrun-operations
     title: GCP Project Cloud Run Operations
-    query: gcp.project.cloudRun.operations.length
+    mql: gcp.project.cloudRun.operations.length
 
   - uid: mondoo-asset-count-gcp-dns-managed-zones
     title: GCP Project DNS Managed Zones
-    query: gcp.project.dns.managedZones.length
+    mql: gcp.project.dns.managedZones.length
 
   - uid: mondoo-asset-count-gcp-iam-policies
     title: GCP Project IAM Policies
-    query: gcp.project.iamPolicy.length
+    mql: gcp.project.iamPolicy.length
 
   - uid: mondoo-asset-count-gcp-kms-keyrings
     title: GCP Project KMS Keyrings
-    query: gcp.project.kms.keyrings.length
+    mql: gcp.project.kms.keyrings.length
 
   - uid: mondoo-asset-count-gcp-sql-instances
     title: GCP Project SQL Instances
-    query: gcp.project.sql.instances.length
+    mql: gcp.project.sql.instances.length
 
   - uid: mondoo-asset-count-gcp-services
     title: GCP Project Services Enabled
-    query: gcp.project.services.where( enabled ).length
+    mql: gcp.project.services.where( enabled ).length
 
   - uid: mondoo-asset-count-gitlab-group-projects
     title: GitLab Group Projects
-    query: gitlab.group.projects.length
+    mql: gitlab.group.projects.length
