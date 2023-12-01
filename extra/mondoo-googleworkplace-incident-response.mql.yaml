@@ -66,7 +66,7 @@ packs:
         title: Google Workspace domains
         mql: googleworkspace.domains { domainName isPrimary verified }
       - uid: mondoo-googleworkspace-incident-response-user-mfa-status
-        title: Google Workspace Users MFA status
+        title: Google Workspace users' MFA status
         mql: googleworkspace.users { primaryEmail isEnforcedIn2Sv }
       - uid: mondoo-googleworkspace-incident-response-super-admins
         title: Google Workspace super admins
