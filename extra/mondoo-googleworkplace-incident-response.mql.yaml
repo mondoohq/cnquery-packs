@@ -69,7 +69,7 @@ packs:
         title: Google Workspace Users MFA status
         mql: googleworkspace.users { primaryEmail isEnforcedIn2Sv }
       - uid: mondoo-googleworkspace-incident-response-super-admins
-        title: Google Workspace Super Admins
+        title: Google Workspace super admins
         mql: googleworkspace.report.users.where( security["isSuperAdmin"] == true) { userEmail  }
       - uid: mondoo-googleworkspace-incident-response-super-admins-without-2FA-enrolled
         title: Google Workspace Super Admins who are not enrolled in 2FA
