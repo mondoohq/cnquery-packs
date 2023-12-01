@@ -27,7 +27,7 @@ packs:
         title: Installed ssl libraries
         mql: packages.where(name == /ssl/)
       - uid: mondoo-openssl-incident-response-listening-ports
-        title: Listening ports from running systems
+        title: Listening ports for running systems
         mql: |
           if ( mondoo.capabilities.contains('run-command') ) {
             ports.listening { 
