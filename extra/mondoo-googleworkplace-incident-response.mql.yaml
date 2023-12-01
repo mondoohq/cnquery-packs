@@ -63,7 +63,7 @@ packs:
       - asset.platform == "googleworkspace" || asset.platform == "google-workspace"
     queries:
       - uid: mondoo-googleworkspace-incident-response-domain
-        title: Google Workspace Domains
+        title: Google Workspace domains
         mql: googleworkspace.domains { domainName isPrimary verified }
       - uid: mondoo-googleworkspace-incident-response-user-mfa-status
         title: Google Workspace Users MFA status
