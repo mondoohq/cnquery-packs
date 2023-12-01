@@ -268,7 +268,7 @@ queries:
     mql: aws.sns.topics.length
 
   - uid: mondoo-asset-count-in-windows-domain
-    title: All computer object from the Windows domain
+    title: All computer objects in the Windows domain
     mql: |
       parse.json(content: powershell('$time = (Get-Date).Adddays(-(180));Get-ADComputer -Filter {LastLogonTimeStamp -ge $time} -properties * | select Name,Enabled,OperatingSystem,OperatingSystemVersion,LastLogonDate | ConvertTo-Json').stdout).params
 
