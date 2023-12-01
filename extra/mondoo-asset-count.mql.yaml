@@ -99,7 +99,7 @@ queries:
       vsphere.datacenters { hosts.length }
 
   - uid: mondoo-asset-count-on-vsphere-cluster-vms
-    title: VMs from vSphere cluster
+    title: VMs in vSphere cluster
     mql: |
      vsphere.datacenters { vms.length }
 
