@@ -72,7 +72,7 @@ packs:
         title: Google Workspace super admins
         mql: googleworkspace.report.users.where( security["isSuperAdmin"] == true) { userEmail  }
       - uid: mondoo-googleworkspace-incident-response-super-admins-without-2FA-enrolled
-        title: Google Workspace Super Admins who are not enrolled in 2FA
+        title: Google Workspace super admins who are not enrolled in 2FA
         mql: googleworkspace.users.where(isEnrolledIn2Sv != true && isAdmin == true) {primaryEmail isEnrolledIn2Sv isAdmin}
       - uid: mondoo-googleworkspace-incident-response-users-without-2FA-enrolled
         title: Google Workspace user accounts that are not enrolled in 2FA
