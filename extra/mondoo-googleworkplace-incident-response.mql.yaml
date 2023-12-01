@@ -78,7 +78,7 @@ packs:
         title: Google Workspace user accounts that are not enrolled in 2FA
         mql: googleworkspace.users.where(isEnrolledIn2Sv != true) {primaryEmail isEnrolledIn2Sv isAdmin}
       - uid: mondoo-googleworkspace-incident-response-super-admins-without-hardware-based-2fa
-        title: Super Admin accounts which do not employ hardware based security keys
+        title: Super admin accounts that do not use hardware-based security keys
         mql: googleworkspace.report.users.where(security["isSuperAdmin"] == true && security["numSecurityKeys"] <= 0 ) {account['adminSetName'] security['numSecurityKeys']}
       - uid: mondoo-googleworkspace-incident-response-config-drift-recovery-email
         title: Primary and recovery email accounts of all Google Workspace users
