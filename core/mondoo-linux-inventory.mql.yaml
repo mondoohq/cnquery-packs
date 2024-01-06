@@ -75,7 +75,7 @@ packs:
         filters: mondoo.capabilities.contains("run-command")
         mql: ports.listening { user state port address protocol process remoteAddress remotePort }
       - uid: mondoo-linux-active-connections
-        title: Active connections of the system
+        title: Active network connections
         filters: mondoo.capabilities.contains("run-command")
         query: ports.where(state != "close") { user state port address protocol process remoteAddress remotePort }
       - uid: mondoo-linux-uptime
