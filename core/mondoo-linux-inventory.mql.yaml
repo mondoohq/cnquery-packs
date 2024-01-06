@@ -145,7 +145,7 @@ packs:
         mql: |
           command('mokutil --sb-state').stdout
       - uid: mondoo-linux-workstation-security-aes-encryption-algo-metadata
-        title: Ciphersuite used for disk encryption
+        title: Disk encryption cipher suite
         filters: |
           asset.family.contains('linux')
           packages.where(name == /xorg|xserver|wayland/i).any(installed)
