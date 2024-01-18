@@ -170,10 +170,29 @@ packs:
             image.id
             state 
             ```
+        variants:
+          - uid: mondoo-incident-response-aws-ec2-instances-without-tags-all
+          - uid: mondoo-incident-response-aws-ec2-instances-without-tags-single
+      - uid: mondoo-incident-response-aws-ec2-instances-without-tags-all
+        filters: |
+          asset.platform == "aws"
         mql: |
           aws.ec2.instances.
             where( tags.length == 0 ) { 
-              instanceId 
+              instanceId
+              region
+              keypair { name }
+              image.name
+              image.id
+              state
+            }
+      - uid: mondoo-incident-response-aws-ec2-instances-without-tags-single
+        filters: |
+          asset.platform == "aws-ec2-instance"
+          aws.ec2.instance.tags.length == 0
+        mql: |
+          aws.ec2.instance {
+              instanceId
               region
               keypair { name }
               image.name
