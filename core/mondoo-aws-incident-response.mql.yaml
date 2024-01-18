@@ -195,9 +195,29 @@ packs:
             tags
             policy
             ```
+        variants:
+          - uid: mondoo-incident-response-aws-s3-buckets-public-all
+          - uid: mondoo-incident-response-aws-s3-buckets-public-single
+      - uid: mondoo-incident-response-aws-s3-buckets-public-all
+        filters: |
+          asset.platform == "aws"
         mql: |
           aws.s3.buckets.
             where( public == true ) {
+              arn
+              name
+              location
+              publicAccessBlock
+              encryption
+              tags
+              policy
+            }
+      - uid: mondoo-incident-response-aws-s3-buckets-public-single
+        filters: |
+          asset.platform == "aws-s3-bucket"
+          aws.s3.bucket.public == true
+        mql: |
+          aws.s3.bucket {
               arn
               name
               location
