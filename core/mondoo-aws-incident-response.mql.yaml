@@ -150,7 +150,7 @@ packs:
           }
       - uid: mondoo-incident-response-aws-iam-administrator-access-group
         filters: |
-          asset.platform == "aws.iam.group"
+          asset.platform == "aws-iam-group"
           aws.iam.attachedPolicies
             .where(arn == "arn:aws:iam::aws:policy/AdministratorAccess")
             .any(attachedGroups
