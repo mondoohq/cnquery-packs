@@ -25,21 +25,33 @@ packs:
         ```bash
         cnquery scan aws -f mondoo-aws-incident-response.mql.yaml
         ```
-    filters:
-      - asset.platform == "aws"
+#    filters:
+#      - asset.platform == "aws"
     queries:
       - uid: mondoo-incident-response-aws-account-id
         title: AWS account ID
+        filters: |
+          asset.platform == "aws"
         mql: |
           aws.account.id
+
+
+
       - uid: mondoo-incident-response-aws-enabled-regions
         title: All regions enabled in the AWS account
+        filters: |
+          asset.platform == "aws"
         docs:
           desc: |
             This query retrieves all AWS regions enabled in the account
         mql: aws { regions }
+
+
+
       - uid: mondoo-incident-response-aws-user-info
         title: IAM users with console access
+        filters: |
+          asset.platform == "aws"
         docs:
           desc: |
             This query retrieves data for users with console access. The following fields are retrieved:
@@ -58,6 +70,9 @@ packs:
               passwordLastChanged 
               mfaActive 
             }
+
+
+
       - uid: mondoo-incident-response-aws-iam-users-multiple-keys
         title: IAM users with API access
         docs:
@@ -88,6 +103,9 @@ packs:
               accessKey2LastUsedService
               accessKey2LastRotated
             }
+
+
+
       - uid: mondoo-incident-response-aws-iam-administrator-access
         title: IAM users, groups, and roles to which the AdministratorAccess policy is attached
         docs:
@@ -150,6 +168,7 @@ packs:
           }
 
 
+
       - uid: mondoo-incident-response-aws-iam-full-access
         title: IAM users, groups, and roles to which any 'FullAccess' policy is attached
         docs:
@@ -165,6 +184,8 @@ packs:
               attachedGroups 
               attachedRoles 
             }
+
+
 
       - uid: mondoo-incident-response-aws-ec2-instances-public-ip
         title: EC2 instances that have a public IP address
@@ -233,6 +254,9 @@ packs:
               }
               tags
             }
+
+
+
       - uid: mondoo-incident-response-aws-ec2-instances-without-tags
         title: EC2 instances that do not have tags configured
         docs:
@@ -276,6 +300,9 @@ packs:
               image.id
               state
             }
+
+
+
       - uid: mondoo-incident-response-aws-s3-buckets-public
         title: S3 buckets that are public
         docs:
