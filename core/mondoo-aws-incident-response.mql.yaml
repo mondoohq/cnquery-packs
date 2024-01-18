@@ -130,7 +130,24 @@ packs:
             loginProfile
             groups
           }
-
+      - uid: mondoo-incident-response-aws-iam-administrator-access-group
+        filters: |
+          asset.platform == "aws.iam.group"
+          aws.iam.attachedPolicies
+            .where(arn == "arn:aws:iam::aws:policy/AdministratorAccess")
+            .any(attachedGroups
+              .contains(
+                arn.in(asset.ids)
+              )
+            )
+        mql: |
+          aws.iam.group {
+            arn
+            name
+            createDate
+            id
+            usernames
+          }
 
 
       - uid: mondoo-incident-response-aws-iam-full-access
