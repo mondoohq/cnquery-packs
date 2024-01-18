@@ -93,6 +93,13 @@ packs:
         docs:
           desc: |
             This query retrieves all IAM users, groups, and roles with the `AdministratorAccess` role attached.
+        variants:
+          - uid: mondoo-incident-response-aws-iam-administrator-access-all
+          - uid: mondoo-incident-response-aws-iam-administrator-access-user
+          - uid: mondoo-incident-response-aws-iam-administrator-access-group
+      - uid: mondoo-incident-response-aws-iam-administrator-access-all
+        filters: |
+          asset.platform == "aws"
         mql: |
           aws.iam.attachedPolicies.
             where( arn == "arn:aws:iam::aws:policy/AdministratorAccess" ) { 
@@ -100,6 +107,32 @@ packs:
               attachedGroups 
               attachedRoles 
             }
+      - uid: mondoo-incident-response-aws-iam-administrator-access-user
+        filters: |
+          asset.platform == "aws-iam-user"
+          aws.iam.attachedPolicies
+            .where(arn == "arn:aws:iam::aws:policy/AdministratorAccess")
+            .any(attachedUsers
+              .contains(
+                arn.in(asset.ids)
+              )
+            )
+        mql: |
+          aws.iam.user {
+            arn
+            name
+            policies
+            id
+            tags
+            attachedPolicies
+            createDate
+            accessKeys
+            loginProfile
+            groups
+          }
+
+
+
       - uid: mondoo-incident-response-aws-iam-full-access
         title: IAM users, groups, and roles to which any 'FullAccess' policy is attached
         docs:
