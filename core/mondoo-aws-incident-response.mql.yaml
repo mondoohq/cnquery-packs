@@ -102,10 +102,10 @@ packs:
           asset.platform == "aws"
         mql: |
           aws.iam.attachedPolicies.
-            where( arn == "arn:aws:iam::aws:policy/AdministratorAccess" ) { 
-              attachedUsers 
-              attachedGroups 
-              attachedRoles 
+            where( arn == "arn:aws:iam::aws:policy/AdministratorAccess" ) {
+              attachedUsers
+              attachedGroups
+              attachedRoles
             }
       - uid: mondoo-incident-response-aws-iam-administrator-access-user
         filters: |
