@@ -123,33 +123,60 @@ packs:
             This query retrieves all EC2 instances that have a public IP address attached along with the following fields:
 
             ```
-            arn 
-            instanceId 
-            region 
+            arn
+            instanceId
+            region
             state
             vpc.id
-            keypair { 
+            keypair {
               name
             }
-            securityGroups { 
+            securityGroups {
               name
               description
               ipPermissions
             }
             tags
             ```
+        variants:
+          - uid: mondoo-incident-response-aws-ec2-instances-public-ip-all
+          - uid: mondoo-incident-response-aws-ec2-instances-public-ip-single
+      - uid: mondoo-incident-response-aws-ec2-instances-public-ip-all
+        filters: |
+          asset.platform == "aws"
         mql: |
           aws.ec2.instances.
-            where( publicIp != '' ) { 
-              arn 
-              instanceId 
-              region 
+            where( publicIp != '' ) {
+              arn
+              instanceId
+              region
               state
               vpc.id
-              keypair { 
+              keypair {
                 name
               }
-              securityGroups { 
+              securityGroups {
+                name
+                description
+                ipPermissions
+              }
+              tags
+            }
+      - uid: mondoo-incident-response-aws-ec2-instances-public-ip-single
+        filters: |
+          asset.platform == "aws"
+          aws.ec2.instance.publicIp != empty
+        mql: |
+          aws.ec2.instance {
+              arn
+              instanceId
+              region
+              state
+              vpc.id
+              keypair {
+                name
+              }
+              securityGroups {
                 name
                 description
                 ipPermissions
@@ -163,7 +190,7 @@ packs:
             This query retrieves all EC2 instances that do not have tags configured, along with the following fields:
 
             ```mql
-            instanceId 
+            instanceId
             region
             keypair { name }
             image.name
@@ -178,7 +205,7 @@ packs:
           asset.platform == "aws"
         mql: |
           aws.ec2.instances.
-            where( tags.length == 0 ) { 
+            where( tags.length == 0 ) {
               instanceId
               region
               keypair { name }
