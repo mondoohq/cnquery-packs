@@ -113,6 +113,16 @@ packs:
         filters: asset.platform == "gitlab-group"
         queries:
           - uid: mondoo-asset-count-gitlab-group-projects
+      - title: K8s Asset Counts
+        filters: asset.platform == "k8s-cluster"
+        queries:
+          - uid: mondoo-asset-count-k8s-nodes
+          - uid: mondoo-asset-count-k8s-daemonsets
+          - uid: mondoo-asset-count-k8s-cronjobs
+          - uid: mondoo-asset-count-k8s-jobs
+          - uid: mondoo-asset-count-k8s-deployments
+          - uid: mondoo-asset-count-k8s-replicasets
+          - uid: mondoo-asset-count-k8s-pods
 queries:
   - uid: mondoo-asset-count-on-vsphere-cluster-esxi
     title: ESXi hosts
@@ -442,3 +452,31 @@ queries:
   - uid: mondoo-asset-count-gitlab-group-projects
     title: GitLab Group Projects
     mql: gitlab.group.projects.length
+
+  - uid: mondoo-asset-count-k8s-nodes
+    title: K8s Nodes count
+    mql: k8s.nodes.length
+
+  - uid: mondoo-asset-count-k8s-daemonsets
+    title: K8s Daemon Sets count
+    mql: k8s.daemonsets.length
+
+  - uid: mondoo-asset-count-k8s-cronjobs
+    title: K8s Cronjobs count
+    mql: k8s.cronjobs.length
+
+  - uid: mondoo-asset-count-k8s-jobs
+    title: K8s Jobs count
+    mql: k8s.jobs.length
+
+  - uid: mondoo-asset-count-k8s-deployments
+    title: K8s Deployments count
+    mql: k8s.deployments.length
+
+  - uid: mondoo-asset-count-k8s-replicasets
+    title: K8s Replicasets count
+    mql: k8s.replicasets.length
+
+  - uid: mondoo-asset-count-k8s-pods
+    title: K8s PODs count
+    mql: k8s.pods.length
