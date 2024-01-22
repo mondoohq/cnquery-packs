@@ -141,7 +141,7 @@ packs:
         variants:
           - uid: mondoo-asset-inventory-aws-ec2-volumes-all
           - uid: mondoo-asset-inventory-aws-ec2-volumes-single
-      - uid: mondoo-asset-inventory-aws-ec2-volumes-all-all
+      - uid: mondoo-asset-inventory-aws-ec2-volumes-all
         filters: |
           asset.platform == "aws"
         mql: aws.ec2.volumes
@@ -155,7 +155,20 @@ packs:
 
       - uid: mondoo-asset-inventory-aws-ec2-retrieve-all-data
         title: Running EC2 instances
-        mql: aws.ec2.instances.where( state == "running" )
+        variants:
+          - uid: mondoo-asset-inventory-aws-ec2-retrieve-all-data-all
+          - uid: mondoo-asset-inventory-aws-ec2-retrieve-all-data-single
+      - uid: mondoo-asset-inventory-aws-ec2-retrieve-all-data
+        filters: |
+          asset.platform == "aws"
+        mql: aws.ec2.instances.where(state == "running")
+      - uid: mondoo-asset-inventory-aws-ec2-retrieve-all-data-single
+        filters: |
+          asset.platform == "aws-ec2-instance"
+          aws.ec2.instance.state == "running"
+        mql: aws.ec2.instance
+
+
 
 
 
