@@ -219,7 +219,15 @@ packs:
 
       - uid: mondoo-asset-inventory-aws-eks-clusters
         title: EKS clusters
+        variants:
+          - uid: mondoo-asset-inventory-aws-eks-clusters-all
+      - uid: mondoo-asset-inventory-aws-eks-clusters-all
+        filters: |
+          asset.platform == "aws"
         mql: aws.eks.clusters
+
+
+
 
 
 
