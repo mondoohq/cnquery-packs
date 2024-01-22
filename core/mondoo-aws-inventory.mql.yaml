@@ -138,7 +138,18 @@ packs:
         docs:
           desc: |
             This query retrieves all AWS EBS volumes
+        variants:
+          - uid: mondoo-asset-inventory-aws-ec2-volumes-all
+          - uid: mondoo-asset-inventory-aws-ec2-volumes-single
+      - uid: mondoo-asset-inventory-aws-ec2-volumes-all-all
+        filters: |
+          asset.platform == "aws"
         mql: aws.ec2.volumes
+      - uid: mondoo-asset-inventory-aws-ec2-volumes-single
+        filters: |
+          asset.platform == "aws-ebs-volume"
+        mql: aws.ec2.volume
+
 
 
 
