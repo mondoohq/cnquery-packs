@@ -174,13 +174,31 @@ packs:
 
       - uid: mondoo-asset-inventory-aws-rds-dbclusters-all-data
         title: RDS database clusters configuration
+        variants:
+          - uid: mondoo-asset-inventory-aws-ec2-retrieve-all-data-all
+      - uid: mondoo-asset-inventory-aws-ec2-retrieve-all-data
+        filters: |
+          asset.platform == "aws"
         mql: aws.rds.dbClusters
+
+
 
 
 
       - uid: mondoo-asset-inventory-aws-rds-dbinstances-all-data
         title: RDS database instances
+        variants:
+          - uid: mondoo-asset-inventory-aws-rds-dbinstances-all-data-all
+          - uid: mondoo-asset-inventory-aws-rds-dbinstances-all-data-single
+      - uid: mondoo-asset-inventory-aws-rds-dbinstances-all-data-all
+        filters: |
+          asset.platform == "aws"
         mql: aws.rds.dbInstances
+      - uid: mondoo-asset-inventory-aws-rds-dbinstances-all-data-single
+        filters: |
+          asset.platform == "aws-rds-dbinstance"
+        mql: aws.rds.dbinstance
+
 
 
 
