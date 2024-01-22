@@ -22,18 +22,36 @@ packs:
         title: AWS account ID
         mql: |
           aws.account.id
+
+
+
       - uid: mondoo-asset-inventory-aws-enabled-regions
         title: Regions enabled in the AWS account
         docs:
           desc: |
             This query retrieves all AWS regions enabled in the account
         mql: aws { regions }
+
+
+
       - uid: mondoo-asset-inventory-aws-vpcs
         title: VPCs
         docs:
           desc: |
             This query retrieves all of the configuration data for AWS VPCs
+        variants:
+          - uid: mondoo-asset-inventory-aws-vpcs-all
+          - uid: mondoo-asset-inventory-aws-vpcs-single
+      - uid: mondoo-asset-inventory-aws-vpcs-all
+        filters: |
+          asset.platform == "aws"
         mql: aws.vpcs
+      - uid: mondoo-asset-inventory-aws-vpcs-single
+        filters: |
+          asset.platform == "aws-vpc"
+        mql: aws.vpc
+
+
       - uid: mondoo-asset-inventory-aws-iam-users
         title: IAM users
         docs:
