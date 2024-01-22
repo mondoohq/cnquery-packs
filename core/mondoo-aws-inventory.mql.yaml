@@ -175,7 +175,7 @@ packs:
       - uid: mondoo-asset-inventory-aws-rds-dbclusters-all-data
         title: RDS database clusters configuration
         variants:
-          - uid: mondoo-asset-inventory-aws-ec2-retrieve-all-data-all
+          - uid: mondoo-asset-inventory-aws-rds-dbclusters-all-data-all
       - uid: mondoo-asset-inventory-aws-ec2-retrieve-all-data
         filters: |
           asset.platform == "aws"
