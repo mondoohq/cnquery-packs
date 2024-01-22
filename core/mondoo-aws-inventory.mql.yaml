@@ -228,12 +228,20 @@ packs:
 
 
 
-
-
-
       - uid: mondoo-asset-inventory-aws-lambda
         title: Lambda functions
+        variants:
+          - uid: mondoo-asset-inventory-aws-lambda-all
+          - uid: mondoo-asset-inventory-aws-lambda-single
+      - uid: mondoo-asset-inventory-aws-lambda-all
+        filters: |
+          asset.platform == "aws"
         mql: aws.lambda.functions
+      - uid: mondoo-asset-inventory-aws-lambda-single
+        filters: |
+          asset.platform == "aws-lambda-function"
+        mql: aws.lambda.function
+
 
 
 
