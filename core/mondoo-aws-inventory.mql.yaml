@@ -52,6 +52,7 @@ packs:
         mql: aws.vpc
 
 
+
       - uid: mondoo-asset-inventory-aws-iam-users
         title: IAM users
         docs:
@@ -68,6 +69,7 @@ packs:
         filters: |
           asset.platform == "aws-iam-user"
         mql: aws.iam.user
+
 
 
       - uid: mondoo-asset-inventory-aws-iam-groups
