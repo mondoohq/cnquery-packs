@@ -201,10 +201,19 @@ packs:
 
 
 
-
       - uid: mondoo-asset-inventory-aws-s3-retrieve-all-data
         title: S3 buckets
+        variants:
+          - uid: mondoo-asset-inventory-aws-s3-retrieve-all-data-all
+          - uid: mondoo-asset-inventory-aws-s3-retrieve-all-data-single
+      - uid: mondoo-asset-inventory-aws-s3-retrieve-all-data-all
+        filters: |
+          asset.platform == "aws"
         mql: aws.s3.buckets
+      - uid: mondoo-asset-inventory-aws-s3-retrieve-all-data-single
+        filters: |
+          asset.platform == "aws-s3-bucket"
+        mql: aws.s3.bucket
 
 
 
