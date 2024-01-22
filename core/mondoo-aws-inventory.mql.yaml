@@ -75,7 +75,17 @@ packs:
         docs:
           desc: |
             This query retrieves all of the IAM groups.
+        variants:
+          - uid: mondoo-asset-inventory-aws-iam-groups-all
+          - uid: mondoo-asset-inventory-aws-iam-groups-single
+      - uid: mondoo-asset-inventory-aws-iam-groups-all
+        filters: |
+          asset.platform == "aws"
         mql: aws.iam.groups
+      - uid: mondoo-asset-inventory-aws-iam-groups-single
+        filters: |
+          asset.platform == "aws-iam-group"
+        mql: aws.iam.group
 
 
 
