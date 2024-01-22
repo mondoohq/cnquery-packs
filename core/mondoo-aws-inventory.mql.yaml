@@ -131,8 +131,6 @@ packs:
 
 
 
-
-
       - uid: mondoo-asset-inventory-aws-ec2-volumes
         title: EBS volumes
         docs:
@@ -149,7 +147,6 @@ packs:
         filters: |
           asset.platform == "aws-ebs-volume"
         mql: aws.ec2.volume
-
 
 
 
@@ -170,8 +167,6 @@ packs:
 
 
 
-
-
       - uid: mondoo-asset-inventory-aws-rds-dbclusters-all-data
         title: RDS database clusters configuration
         variants:
@@ -180,8 +175,6 @@ packs:
         filters: |
           asset.platform == "aws"
         mql: aws.rds.dbClusters
-
-
 
 
 
@@ -244,7 +237,6 @@ packs:
 
 
 
-
       - uid: mondoo-asset-inventory-aws-access-analyzer
         title: Access Analyzers
         variants:
@@ -253,8 +245,6 @@ packs:
         filters: |
           asset.platform == "aws"
         mql: aws.accessAnalyzer.analyzers
-
-
 
 
 
