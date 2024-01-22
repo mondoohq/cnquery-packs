@@ -94,6 +94,11 @@ packs:
         docs:
           desc: |
             This query retrieves all IAM Roles
+        variants:
+          - uid: mondoo-asset-inventory-aws-iam-roles-all
+      - uid: mondoo-asset-inventory-aws-iam-roles-all
+        filters: |
+          asset.platform == "aws"
         mql: aws.iam.roles
 
 
@@ -112,7 +117,19 @@ packs:
         docs:
           desc: |
             This query retrieves all AWS EC2 Security Groups
+        variants:
+          - uid: mondoo-asset-inventory-aws-ec2-security-groups-all
+          - uid: mondoo-asset-inventory-aws-ec2-security-groups-single
+      - uid: mondoo-asset-inventory-aws-ec2-security-groups-all
+        filters: |
+          asset.platform == "aws"
         mql: aws.ec2.securityGroups
+      - uid: mondoo-asset-inventory-aws-ec2-security-groups-single
+        filters: |
+          asset.platform == "aws-security-group"
+        mql: aws.ec2.securitygroup
+
+
 
 
 
