@@ -247,12 +247,24 @@ packs:
 
       - uid: mondoo-asset-inventory-aws-access-analyzer
         title: Access Analyzers
+        variants:
+          - uid: mondoo-asset-inventory-aws-access-analyzer-all
+      - uid: mondoo-asset-inventory-aws-access-analyzer-all
+        filters: |
+          asset.platform == "aws"
         mql: aws.accessAnalyzer.analyzers
+
+
 
 
 
       - uid: mondoo-asset-inventory-aws-acm-certificates
         title: Certificate Manager certificates
+        variants:
+          - uid: mondoo-asset-inventory-aws-acm-certificates-all
+      - uid: mondoo-asset-inventory-aws-acm-certificates-all
+        filters: |
+          asset.platform == "aws"
         mql: aws.acm.certificates
 
 
