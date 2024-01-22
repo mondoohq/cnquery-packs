@@ -271,4 +271,14 @@ packs:
 
       - uid: mondoo-asset-inventory-aws-cloudtrail-trails
         title: CloudTrail trails
+        variants:
+          - uid: mondoo-asset-inventory-aws-cloudtrail-trails-all
+          - uid: mondoo-asset-inventory-aws-cloudtrail-trails-single
+      - uid: mondoo-asset-inventory-aws-cloudtrail-trails-all
+        filters: |
+          asset.platform == "aws"
         mql: aws.cloudtrail.trails
+      - uid: mondoo-asset-inventory-aws-cloudtrail-trails-single
+        filters: |
+          asset.platform == "aws-cloudtrail-trail"
+        mql: aws.cloudtrail.trail
