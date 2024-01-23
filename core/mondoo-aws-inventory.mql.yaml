@@ -160,11 +160,11 @@ packs:
       - uid: mondoo-asset-inventory-aws-ec2-retrieve-all-data
         filters: |
           asset.platform == "aws"
-        mql: aws.ec2.instances.where(state == "running")
+        mql: aws.ec2.instances.where(state != "terminated")
       - uid: mondoo-asset-inventory-aws-ec2-retrieve-all-data-single
         filters: |
           asset.platform == "aws-ec2-instance"
-          aws.ec2.instance.state == "running"
+          aws.ec2.instance.state != "terminated"
         mql: aws.ec2.instance
 
 
