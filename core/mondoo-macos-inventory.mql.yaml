@@ -104,3 +104,7 @@ packs:
         title: Configuration Profile Data
         mql: |
           parse.json(content: command('system_profiler SPConfigurationProfileDataType -json').stdout).params
+      - uid: mondoo-macos-mdm-managed
+        title: MDM managed
+        mql: |
+          command('/usr/bin/profiles status -type enrollment | grep "MDM enrollment"').stdout.contains('Yes')
