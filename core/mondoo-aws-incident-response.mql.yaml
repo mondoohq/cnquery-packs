@@ -25,8 +25,8 @@ packs:
         ```bash
         cnquery scan aws -f mondoo-aws-incident-response.mql.yaml
         ```
-#    filters:
-#      - asset.platform == "aws"
+    filters:
+      - asset.runtime == "aws"
     queries:
       - uid: mondoo-incident-response-aws-account-id
         title: AWS account ID
@@ -44,7 +44,8 @@ packs:
         docs:
           desc: |
             This query retrieves all AWS regions enabled in the account
-        mql: aws { regions }
+        mql: |
+          aws { regions }
 
 
 
@@ -75,6 +76,8 @@ packs:
 
       - uid: mondoo-incident-response-aws-iam-users-multiple-keys
         title: IAM users with API access
+        filters: |
+          asset.platform == "aws"
         docs:
           desc: |
             This query retrieves all of the IAM users that have API access along with the following fields:
@@ -171,6 +174,8 @@ packs:
 
       - uid: mondoo-incident-response-aws-iam-full-access
         title: IAM users, groups, and roles to which any 'FullAccess' policy is attached
+        filters: |
+          asset.platform == "aws"
         docs:
           desc: |
             This query retrieves all IAM users, groups, and roles with an AWS FullAccess role attached.
@@ -235,7 +240,7 @@ packs:
             }
       - uid: mondoo-incident-response-aws-ec2-instances-public-ip-single
         filters: |
-          asset.platform == "aws"
+          asset.platform == "aws-ec2-instance"
           aws.ec2.instance.publicIp != empty
         mql: |
           aws.ec2.instance {
