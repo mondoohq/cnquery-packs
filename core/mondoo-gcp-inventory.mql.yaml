@@ -153,7 +153,7 @@ packs:
       - uid: mondoo-asset-inventory-gcp-compute-instances-public-all
         filters: asset.platform == "gcp-project"
         mql: |
-          gcp.compute.instance.networkInterfaces.flat['accessConfigs'][0]['name'] == "External NAT"
+          gcp.compute.instance.networkInterfaces[0]['accessConfigs'][0]['name'] == "External NAT"
       - uid: mondoo-asset-inventory-gcp-compute-instances-public-single
         filters: |
           asset.platform == "gcp-compute-instance"
@@ -164,6 +164,7 @@ packs:
 
       - uid: mondoo-asset-inventory-gcp-compute-networks-count
         title: GCP Compute Engine networks count
+        filters: asset.platform == "gcp-project"
         docs:
           desc: |
             This query retrieves a count of GCP Compute Engine networks configured in a GCP project
@@ -176,4 +177,22 @@ packs:
         docs:
           desc: |
             This query retrieves the data for all GCP Compute Engine networks configured in a GCP project.
-        mql: gcp.compute.networks
+        variants:
+          - uid: mondoo-asset-inventory-gcp-compute-networks-data-all
+          - uid: mondoo-asset-inventory-gcp-compute-networks-data-single
+          - uid: mondoo-asset-inventory-gcp-compute-networks-data-subnet
+      - uid: mondoo-asset-inventory-gcp-compute-networks-data-all
+        filters: |
+          asset.platform == "gcp-project"
+        mql: |
+          gcp.compute.networks
+      - uid: mondoo-asset-inventory-gcp-compute-networks-data-single
+        filters: |
+          asset.platform == "gcp-compute-network"
+        mql: |
+          gcp.compute.network
+      - uid: mondoo-asset-inventory-gcp-compute-networks-data-subnet
+        filters: |
+          asset.platform == "gcp-compute-subnetwork"
+        mql: |
+          gcp.compute.subnetwork
