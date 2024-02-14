@@ -153,12 +153,13 @@ packs:
       - uid: mondoo-asset-inventory-gcp-compute-instances-public-all
         filters: asset.platform == "gcp-project"
         mql: |
-          gcp.compute.instance.networkInterfaces[0]['accessConfigs'][0]['name'] == "External NAT"
+          gcp.compute.instances.where(networkInterfaces.where(_['accessConfigs'].where(_['name'] == "External NAT")))
       - uid: mondoo-asset-inventory-gcp-compute-instances-public-single
         filters: |
           asset.platform == "gcp-compute-instance"
+          gcp.compute.instance.networkInterfaces.any(_['accessConfigs'].where(_['name'] == "External NAT"))
         mql: |
-          gcp.compute.instances.where(networkInterfaces[0]['accessConfigs'][0]['name'] == "External NAT")
+          gcp.compute.instance
 
 
 
