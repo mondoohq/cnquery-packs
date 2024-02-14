@@ -95,12 +95,20 @@ packs:
 
       - uid: mondoo-asset-inventory-gcp-gke-clusters-data
         title: GKE clusters configuration
-        filters: asset.platform == "gcp-project"
         docs:
           desc: |
             This query retrieves all of the configuration data for GKE clusters within a project
-        mql: gcp.project.gke.clusters
-
+        variants:
+          - uid: mondoo-asset-inventory-gcp-gke-clusters-data-all
+          - uid: mondoo-asset-inventory-gcp-gke-clusters-data-single
+      - uid: mondoo-asset-inventory-gcp-gke-clusters-data-all
+        filters: asset.platform == "gcp-project"
+        mql: |
+          gcp.project.gke.clusters
+      - uid: mondoo-asset-inventory-gcp-gke-clusters-data-single
+        filters: asset.platform == "gcp-gke-cluster"
+        mql: |
+          gcp.project.gke.cluster
 
 
       - uid: mondoo-asset-inventory-gcp-compute-instances-count
@@ -139,8 +147,18 @@ packs:
         docs:
           desc: |
             This query retrieves the data for all GCP Compute Engine instances that have been configured with an external IP address.
+        variants:
+          - uid: mondoo-asset-inventory-gcp-compute-instances-public-all
+          - uid: mondoo-asset-inventory-gcp-compute-instances-public-single
+      - uid: mondoo-asset-inventory-gcp-compute-instances-public-all
+        filters: asset.platform == "gcp-project"
         mql: |
-          gcp.compute.instances.where( networkInterfaces[0]['accessConfigs'][0]['name'] == "External NAT" )
+          gcp.compute.instance.networkInterfaces.flat['accessConfigs'][0]['name'] == "External NAT"
+      - uid: mondoo-asset-inventory-gcp-compute-instances-public-single
+        filters: |
+          asset.platform == "gcp-compute-instance"
+        mql: |
+          gcp.compute.instances.where(networkInterfaces[0]['accessConfigs'][0]['name'] == "External NAT")
 
 
 
