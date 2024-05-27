@@ -30,6 +30,7 @@ packs:
           - uid: mondoo-asset-inventory-azure-sqlServers-firewallrules
           - uid: mondoo-asset-inventory-azure-sqlServers-databases
           - uid: mondoo-asset-inventory-azure-postgresql
+          - uid: mondoo-asset-inventory-azure-postgresql-firewallrules
           - uid: mondoo-asset-inventory-azure-mysql
           - uid: mondoo-asset-inventory-azure-mysql-firewallrules
 
