@@ -347,15 +347,21 @@ queries:
 
 
 
-
-
-
   - uid: mondoo-asset-inventory-azure-keyVaults-certificates
     title: Azure Key Vault vault certificates
     docs:
       desc: |
         This query retrieves data for all certificates in Key Vaults
+    variants:
+      - uid: mondoo-asset-inventory-azure-keyVaults-certificates-api
+      - uid: mondoo-asset-inventory-azure-keyVaults-certificates-single
+  - uid: mondoo-asset-inventory-azure-keyVaults-certificates-api
+    filters: asset.platform == "azure"
     mql: azure.subscription.keyVault.vaults { certificates }
+  - uid: mondoo-asset-inventory-azure-keyVaults-certificates-single
+    filters: asset.platform == "azure-keyvault-vault"
+    mql: azure.subscription.keyVault.vault.certificates
+
 
 
 
