@@ -29,6 +29,7 @@ packs:
           - uid: mondoo-asset-inventory-azure-sqlServers
           - uid: mondoo-asset-inventory-azure-sqlServers-firewallrules
           - uid: mondoo-asset-inventory-azure-sqlServers-databases
+          - uid: mondoo-asset-inventory-azure-postgresql
 
 
 
@@ -170,17 +171,28 @@ queries:
 
 
 
-
-
-
-
-
   - uid: mondoo-asset-inventory-azure-postgresql
     title: Azure PostgreSQL servers
     docs:
       desc: |
         This query retrieves data for all PostgreSQL servers
-    mql: azure.subscription.postgreSql.servers
+    variants:
+      - uid: mondoo-asset-inventory-azure-postgresql-all
+      - uid: mondoo-asset-inventory-azure-postgresql-legacy
+      - uid: mondoo-asset-inventory-azure-postgresql-flexible
+  - uid: mondoo-asset-inventory-azure-postgresql-all
+    filters: asset.platform == "azure"
+    mql: |
+      azure.subscription.postgreSql.servers
+      azure.subscription.postgreSql.flexibleServers
+  - uid: mondoo-asset-inventory-azure-postgresql-legacy
+    filters: asset.platform == "azure-postgresql-server"
+    mql: azure.subscription.postgreSql.server
+  - uid: mondoo-asset-inventory-azure-postgresql-flexible
+    filters: asset.platform == "azure-postgresql-flexible-server"
+    mql: azure.subscription.postgreSql.flexibleServer
+
+
 
 
 
