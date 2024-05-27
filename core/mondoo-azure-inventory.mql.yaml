@@ -43,8 +43,15 @@ packs:
           - uid: mondoo-asset-inventory-azure-publicip
           - uid: mondoo-asset-inventory-azure-virtualmachines
           - uid: mondoo-asset-inventory-azure-virtualmachines-managedDisk
-
-
+          - uid: mondoo-asset-inventory-azure-webapp
+          - uid: mondoo-asset-inventory-azure-cosmosDb
+          - uid: mondoo-asset-inventory-azure-applicationInsight
+          - uid: mondoo-asset-inventory-azure-networkWatcher
+          - uid: mondoo-asset-inventory-azure-bastionHosts
+          - uid: mondoo-asset-inventory-azure-compute-disks
+          - uid: mondoo-asset-inventory-azure-network-interfaces
+          - uid: mondoo-asset-inventory-azure-resourcegroups
+          - uid: mondoo-asset-inventory-azure-resources
 queries:
   - uid: mondoo-asset-inventory-azure-roleDefinitions
     title: Azure role definitions
@@ -436,9 +443,6 @@ queries:
   - uid: mondoo-asset-inventory-azure-virtualmachines-managedDisk-single
     filters: asset.platform == "azure-compute-vm-api" && azure.subscription.compute.vm.properties["storageProfile"]["osDisk"]["managedDisk"] != empty
     mql: azure.subscription.compute.vm.properties["storageProfile"]["osDisk"]["managedDisk"] != empty
-
-
-
 
 
 
