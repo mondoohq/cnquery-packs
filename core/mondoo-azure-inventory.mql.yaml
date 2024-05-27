@@ -27,6 +27,8 @@ packs:
           - uid: mondoo-asset-inventory-azure-storageAccounts-blobs
           - uid: mondoo-asset-inventory-azure-storageAccounts-tables
           - uid: mondoo-asset-inventory-azure-sqlServers
+          - uid: mondoo-asset-inventory-azure-sqlServers-firewallrules
+          - uid: mondoo-asset-inventory-azure-sqlServers-databases
 
 
 
@@ -151,18 +153,25 @@ queries:
 
 
 
-
-
-
-
-
-
   - uid: mondoo-asset-inventory-azure-sqlServers-databases
     title: Azure SQL Database server databases
     docs:
       desc: |
         This query retrieves data for all databases in Azure SQL Database servers
+    variants:
+      - uid: mondoo-asset-inventory-azure-sqlServers-databases-single
+      - uid: mondoo-asset-inventory-azure-sqlServers-databases-api
+  - uid: mondoo-asset-inventory-azure-sqlServers-databases-api
+    filters: asset.platform == "azure"
     mql: azure.subscription.sql.servers { databases }
+  - uid: mondoo-asset-inventory-azure-sqlServers-databases-single
+    filters: asset.platform == "azure-sql-server"
+    mql: azure.subscription.sql.server.databases
+
+
+
+
+
 
 
 
