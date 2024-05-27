@@ -37,6 +37,12 @@ packs:
           - uid: mondoo-asset-inventory-azure-keyVaults
           - uid: mondoo-asset-inventory-azure-keyVaults-keys
           - uid: mondoo-asset-inventory-azure-keyVaults-secrets
+          - uid: mondoo-asset-inventory-azure-keyVaults-certificates
+          - uid: mondoo-asset-inventory-azure-activitylogs
+          - uid: mondoo-asset-inventory-azure-networkSecurityGroups
+          - uid: mondoo-asset-inventory-azure-publicip
+          - uid: mondoo-asset-inventory-azure-virtualmachines
+          - uid: mondoo-asset-inventory-azure-virtualmachines-managedDisk
 
 
 queries:
@@ -405,8 +411,15 @@ queries:
     docs:
       desc: |
         This query retrieves data for all virtual machines
+    variants:
+      - uid: mondoo-asset-inventory-azure-virtualmachines-api
+      - uid: mondoo-asset-inventory-azure-virtualmachines-single
+  - uid: mondoo-asset-inventory-azure-virtualmachines-api
+    filters: asset.platform == "azure"
     mql: azure.subscription.compute.vms
-
+  - uid: mondoo-asset-inventory-azure-virtualmachines-single
+    filters: asset.platform == "azure-compute-vm-api"
+    mql: azure.subscription.compute.vm
 
 
   - uid: mondoo-asset-inventory-azure-virtualmachines-managedDisk
@@ -414,7 +427,18 @@ queries:
     docs:
       desc: |
         This query retrieves data for all virtual machines with managed disks
-    mql: azure.subscription.compute.vms.where( properties["storageProfile"]["osDisk"]["managedDisk"].length > 0 )
+    variants:
+      - uid: mondoo-asset-inventory-azure-virtualmachines-managedDisk-api
+      - uid: mondoo-asset-inventory-azure-virtualmachines-managedDisk-single
+  - uid: mondoo-asset-inventory-azure-virtualmachines-managedDisk-api
+    filters: asset.platform == "azure"
+    mql: azure.subscription.compute.vms.where( properties["storageProfile"]["osDisk"]["managedDisk"] != empty )
+  - uid: mondoo-asset-inventory-azure-virtualmachines-managedDisk-single
+    filters: asset.platform == "azure-compute-vm-api" && azure.subscription.compute.vm.properties["storageProfile"]["osDisk"]["managedDisk"] != empty
+    mql: azure.subscription.compute.vm.properties["storageProfile"]["osDisk"]["managedDisk"] != empty
+
+
+
 
 
 
