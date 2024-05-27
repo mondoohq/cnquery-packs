@@ -66,7 +66,15 @@ queries:
     docs:
       desc: |
         This query retrieves data for all containers in storage accounts
+    variants:
+      - uid: mondoo-asset-inventory-azure-storageAccounts-containers-single
+      - uid: mondoo-asset-inventory-azure-storageAccounts-containers-api
+  - uid: mondoo-asset-inventory-azure-storageAccounts-containers-api
+    filters: asset.platform == "azure"
     mql: azure.subscription.storage.accounts { containers }
+  - uid: mondoo-asset-inventory-azure-storageAccounts-containers-single
+    filters: asset.platform == "azure-storage-account" && azure.subscription.storage.account.containers != empty
+    mql: azure.subscription.storage.account.containers
 
 
 
