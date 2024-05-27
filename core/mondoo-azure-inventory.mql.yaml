@@ -18,9 +18,11 @@ packs:
     groups:
       - uid: mondoo-incident-response-aws-group
         title: AWS Asset Inventory Pack Group
-        filters: asset.platform == "azure"
+        filters: asset.runtime == "azure"
         queries:
-          - uid:
+          - uid: mondoo-asset-inventory-azure-roleDefinitions
+          - uid: mondoo-asset-inventory-azure-cloudDefender
+          - uid: mondoo-asset-inventory-azure-storageAccounts
 
 
 queries:
@@ -47,6 +49,14 @@ queries:
     docs:
       desc: |
         This query retrieves data for all storage accounts
+    variants:
+      - uid: mondoo-asset-inventory-azure-storageAccounts-single
+      - uid: mondoo-asset-inventory-azure-storageAccounts-api
+  - uid: mondoo-asset-inventory-azure-storageAccounts-single
+    filters: asset.platform == "azure-storage-account"
+    mql: azure.subscription.storage.account
+  - uid: mondoo-asset-inventory-azure-storageAccounts-api
+    filters: asset.platform == "azure"
     mql: azure.subscription.storage.accounts
 
 
