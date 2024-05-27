@@ -31,7 +31,7 @@ packs:
           - uid: mondoo-asset-inventory-azure-sqlServers-databases
           - uid: mondoo-asset-inventory-azure-postgresql
           - uid: mondoo-asset-inventory-azure-mysql
-
+          - uid: mondoo-asset-inventory-azure-mysql-firewallrules
 
 
 queries:
@@ -220,6 +220,29 @@ queries:
 
 
 
+  - uid: mondoo-asset-inventory-azure-mysql-firewallrules
+    title: Azure MySQL servers
+    docs:
+      desc: |
+        This query retrieves data for all Azure MySQL servers
+    variants:
+      - uid: mondoo-asset-inventory-azure-mysql-firewallrules-all
+      - uid: mondoo-asset-inventory-azure-mysql-firewallrules-legacy
+      - uid: mondoo-asset-inventory-azure-mysql-firewallrules-flexible
+  - uid: mondoo-asset-inventory-azure-mysql-firewallrules-all
+    filters: asset.platform == "azure"
+    mql: |
+      azure.subscription.mySql.servers { firewallRules }
+      azure.subscription.mySql.flexibleServers { firewallRules }
+  - uid: mondoo-asset-inventory-azure-mysql-firewallrules-legacy
+    filters: asset.platform == "azure-mysql-server"
+    mql: azure.subscription.mySql.server.firewallRules
+  - uid: mondoo-asset-inventory-azure-mysql-firewallrules-flexible
+    filters: asset.platform == "azure-mysql-flexible-server"
+    mql: azure.subscription.mySql.flexibleServer.firewallRules
+
+
+
   - uid: mondoo-asset-inventory-azure-mysql
     title: Azure MySQL servers
     docs:
@@ -240,7 +263,6 @@ queries:
   - uid: mondoo-asset-inventory-azure-postgresql-firewallrules-flexible
     filters: asset.platform == "azure-mysql-flexible-server"
     mql: azure.subscription.mySql.flexibleServer
-
 
 
   - uid: mondoo-asset-inventory-azure-mariaDb
