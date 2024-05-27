@@ -30,6 +30,7 @@ packs:
           - uid: mondoo-asset-inventory-azure-sqlServers-firewallrules
           - uid: mondoo-asset-inventory-azure-sqlServers-databases
           - uid: mondoo-asset-inventory-azure-postgresql
+          - uid: mondoo-asset-inventory-azure-mysql
 
 
 
@@ -212,7 +213,7 @@ queries:
       azure.subscription.postgreSql.flexibleServers { firewallRules }
   - uid: mondoo-asset-inventory-azure-postgresql-firewallrules-legacy
     filters: asset.platform == "azure-postgresql-server"
-    mql:       azure.subscription.postgreSql.server.firewallRules
+    mql: azure.subscription.postgreSql.server.firewallRules
   - uid: mondoo-asset-inventory-azure-postgresql-firewallrules-flexible
     filters: asset.platform == "azure-postgresql-flexible-server"
     mql: azure.subscription.postgreSql.flexibleServer.firewallRules
@@ -224,7 +225,21 @@ queries:
     docs:
       desc: |
         This query retrieves data for all Azure MySQL servers
-    mql: azure.subscription.mySql{ servers flexibleServers }
+    variants:
+      - uid: mondoo-asset-inventory-azure-mysql-all
+      - uid: mondoo-asset-inventory-azure-mysql-legacy
+      - uid: mondoo-asset-inventory-azure-mysql-flexible
+  - uid: mondoo-asset-inventory-azure-mysql-all
+    filters: asset.platform == "azure"
+    mql: |
+      azure.subscription.mySql.servers
+      azure.subscription.mySql.flexibleServers
+  - uid: mondoo-asset-inventory-azure-mysql-legacy
+    filters: asset.platform == "azure-mysql-server"
+    mql: azure.subscription.mySql.server
+  - uid: mondoo-asset-inventory-azure-postgresql-firewallrules-flexible
+    filters: asset.platform == "azure-mysql-flexible-server"
+    mql: azure.subscription.mySql.flexibleServer
 
 
 
