@@ -311,17 +311,24 @@ queries:
 
 
 
-
-
-
-
-
   - uid: mondoo-asset-inventory-azure-keyVaults-keys
     title: Azure Key Vault vault keys
     docs:
       desc: |
         This query retrieves data for all keys in Key Vaults
+    variants:
+      - uid: mondoo-asset-inventory-azure-keyVaults-keys-api
+      - uid: mondoo-asset-inventory-azure-keyVaults-keys-single
+  - uid: mondoo-asset-inventory-azure-keyVaults-keys-api
+    filters: asset.platform == "azure"
     mql: azure.subscription.keyVault.vaults { keys }
+  - uid: mondoo-asset-inventory-azure-keyVaults-keys-single
+    filters: asset.platform == "azure-keyvault-vault"
+    mql: azure.subscription.keyVault.vault.keys
+
+
+
+
 
 
 
