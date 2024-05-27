@@ -35,6 +35,8 @@ packs:
           - uid: mondoo-asset-inventory-azure-mysql-firewallrules
           - uid: mondoo-asset-inventory-azure-mariaDb
           - uid: mondoo-asset-inventory-azure-keyVaults
+          - uid: mondoo-asset-inventory-azure-keyVaults-keys
+          - uid: mondoo-asset-inventory-azure-keyVaults-secrets
 
 
 queries:
