@@ -328,16 +328,23 @@ queries:
 
 
 
-
-
-
-
   - uid: mondoo-asset-inventory-azure-keyVaults-secrets
     title: Azure Key Vault vault secrets
     docs:
       desc: |
         This query retrieves data for all secrets in Key Vaults
+    variants:
+      - uid: mondoo-asset-inventory-azure-keyVaults-secrets-api
+      - uid: mondoo-asset-inventory-azure-keyVaults-secrets-single
+  - uid: mondoo-asset-inventory-azure-keyVaults-secrets-api
+    filters: asset.platform == "azure"
     mql: azure.subscription.keyVault.vaults { secrets }
+  - uid: mondoo-asset-inventory-azure-keyVaults-secrets-single
+    filters: asset.platform == "azure-keyvault-vault"
+    mql: azure.subscription.keyVault.vault.secrets
+
+
+
 
 
 
