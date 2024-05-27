@@ -278,7 +278,7 @@ queries:
   - uid: mondoo-asset-inventory-azure-mysql-legacy
     filters: asset.platform == "azure-mysql-server"
     mql: azure.subscription.mySql.server
-  - uid: mondoo-asset-inventory-azure-postgresql-firewallrules-flexible
+  - uid: mondoo-asset-inventory-azure-mysql-flexible
     filters: asset.platform == "azure-mysql-flexible-server"
     mql: azure.subscription.mySql.flexibleServer
 
