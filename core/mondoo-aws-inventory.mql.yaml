@@ -198,7 +198,7 @@ queries:
         variants:
           - uid: mondoo-asset-inventory-aws-ec2-retrieve-all-data-all
           - uid: mondoo-asset-inventory-aws-ec2-retrieve-all-data-single
-      - uid: mondoo-asset-inventory-aws-ec2-retrieve-all-data
+      - uid: mondoo-asset-inventory-aws-ec2-retrieve-all-data-all
         filters: |
           asset.platform == "aws"
         mql: |
