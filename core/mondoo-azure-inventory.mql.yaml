@@ -201,7 +201,21 @@ queries:
     docs:
       desc: |
         This query retrieves data for all firewall rules in Azure PostgreSQL servers
-    mql: azure.subscription.postgreSql.servers { firewallRules }
+    variants:
+      - uid: mondoo-asset-inventory-azure-postgresql-firewallrules-all
+      - uid: mondoo-asset-inventory-azure-postgresql-firewallrules-legacy
+      - uid: mondoo-asset-inventory-azure-postgresql-firewallrules-flexible
+  - uid: mondoo-asset-inventory-azure-postgresql-firewallrules-all
+    filters: asset.platform == "azure"
+    mql: |
+      azure.subscription.postgreSql.servers { firewallRules }
+      azure.subscription.postgreSql.flexibleServers { firewallRules }
+  - uid: mondoo-asset-inventory-azure-postgresql-firewallrules-legacy
+    filters: asset.platform == "azure-postgresql-server"
+    mql:       azure.subscription.postgreSql.server.firewallRules
+  - uid: mondoo-asset-inventory-azure-postgresql-firewallrules-flexible
+    filters: asset.platform == "azure-postgresql-flexible-server"
+    mql: azure.subscription.postgreSql.flexibleServer.firewallRules
 
 
 
