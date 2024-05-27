@@ -429,6 +429,7 @@ queries:
     mql: azure.subscription.compute.vm
 
 
+
   - uid: mondoo-asset-inventory-azure-virtualmachines-managedDisk
     title: Azure virtual machines with managed disks
     docs:
