@@ -34,6 +34,7 @@ packs:
           - uid: mondoo-asset-inventory-azure-mysql
           - uid: mondoo-asset-inventory-azure-mysql-firewallrules
           - uid: mondoo-asset-inventory-azure-mariaDb
+          - uid: mondoo-asset-inventory-azure-keyVaults
 
 
 queries:
@@ -284,11 +285,6 @@ queries:
 
 
 
-
-
-
-
-
   - uid: mondoo-asset-inventory-azure-diagnosticSettings
     title: Azure diagnostic settings
     docs:
@@ -303,7 +299,20 @@ queries:
     docs:
       desc: |
         This query retrieves data for all Azure Key Vault vaults
+    variants:
+      - uid: mondoo-asset-inventory-azure-keyVaults-single
+      - uid: mondoo-asset-inventory-azure-keyVaults-api
+  - uid: mondoo-asset-inventory-azure-keyVaults-api
+    filters: asset.platform == "azure"
     mql: azure.subscription.keyVault.vaults
+  - uid: mondoo-asset-inventory-azure-keyVaults-single
+    filters: asset.platform == "azure-keyvault-vault"
+    mql: azure.subscription.keyVault.vault
+
+
+
+
+
 
 
 
