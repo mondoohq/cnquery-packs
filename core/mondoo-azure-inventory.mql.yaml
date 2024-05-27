@@ -379,7 +379,15 @@ queries:
     docs:
       desc: |
         This query retrieves data for all network security groups
+    variants:
+      - uid: mondoo-asset-inventory-azure-networkSecurityGroups-api
+      - uid: mondoo-asset-inventory-azure-networkSecurityGroups-single
+  - uid: mondoo-asset-inventory-azure-networkSecurityGroups-api
+    filters: asset.platform == "azure"
     mql: azure.subscription.network.securityGroups
+  - uid: mondoo-asset-inventory-azure-networkSecurityGroups-single
+    filters: asset.platform == "azure-network-security-group"
+    mql: azure.subscription.network.securityGroup
 
 
 
