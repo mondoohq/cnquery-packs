@@ -15,8 +15,6 @@ packs:
     docs:
       desc: |
         The GCP Asset Inventory by Mondoo query pack retrieves information about GCP projects for asset inventory.
-    filters:
-      - asset.runtime == "gcp"
     groups:
       - uid: mondoo-asset-inventory-gcp-group
         title: GCP Asset Inventory Pack Group
@@ -35,10 +33,7 @@ packs:
           - uid: mondoo-asset-inventory-gcp-compute-instances-public
           - uid: mondoo-asset-inventory-gcp-compute-networks-count
           - uid: mondoo-asset-inventory-gcp-compute-networks-data
-
-
-
-    queries:
+queries:
       - uid: mondoo-asset-inventory-gcp-project-info
         title: GCP Project Information
         filters: asset.platform == "gcp-project"
