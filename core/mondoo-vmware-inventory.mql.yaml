@@ -99,6 +99,3 @@ packs:
         mql: |
           esxi.host.standardSwitch
 
-
-
-
