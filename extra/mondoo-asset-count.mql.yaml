@@ -65,7 +65,6 @@ packs:
           - uid: mondoo-asset-count-aws-efs-filesystems
           - uid: mondoo-asset-count-aws-eks-clusters
           - uid: mondoo-asset-count-aws-elasticache-cache-clusters
-          - uid: mondoo-asset-count-aws-elasticache-clusters
           - uid: mondoo-asset-count-aws-elb-application
           - uid: mondoo-asset-count-aws-elb-classic
           - uid: mondoo-asset-count-aws-emr-clusters
