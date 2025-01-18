@@ -1,0 +1,58 @@
+# Copyright (c) Mondoo, Inc.
+# SPDX-License-Identifier: BUSL-1.1
+
+packs:
+  - uid: mondoo-npm-inventory
+    name: NPM Inventory Pack
+    version: 0.8.0
+    license: BUSL-1.1
+    authors:
+      - name: Mondoo, Inc
+        email: hello@mondoo.com
+    tags:
+      mondoo.com/platform: linux,windows,macos
+      mondoo.com/category: security
+    docs:
+      desc: |
+        ### Overview
+
+        The Mondoo NPM Inventory Pack enables comprehensive security scanning and monitoring of Node.js packages in your development environment. This pack helps development teams identify vulnerabilities, maintain dependency hygiene, and ensure compliance with security best practices across their Node.js projects.
+
+        ### Run query pack
+
+        To run this query pack on a local Linux, Windows or MacOS host:
+
+        ```bash
+        cnquery scan local -f mondoo-npm-inventory.mql.yaml
+        ```
+    groups:
+      - uid: mondoo-npm-inventory
+        title: Global installed NPM packages
+        filters: |
+          asset.family.contains(/linux|darwin|windows/)
+        queries:
+          - uid: mondoo-npm-inventory-global
+
+queries:
+  - uid: mondoo-npm-inventory-global
+    title: NPM installed packages (global)
+    props:
+      - uid: npmPath
+        title: Define the npm path
+        mql: |
+          [
+            "C:\\Program Files\\nodejs\\node_modules\\npm\\",
+            "/opt/homebrew/lib/node_modules/npm/"
+          ].where(file(_+'package.json').exists)
+    mql: |
+      props.npmPath { _ npm.packages(_) }
+  
+  - uid: mondoo-npm-inventory-global
+    title: NPM installed packages (project folders)
+    props:
+      - uid: npmPathProject
+        title: Define the npm project path
+        mql: |
+          parse.json(content: powershell(' Get-ChildItem "C:\Users\" -Recurse -Depth 8 | where {$_.name -match "package.json"} | select DirectoryName | ConvertTo-Json -Compress').stdout).params.map(DirectoryName)
+    mql: |
+      props.npmPathProject { _ npm.packages(_) }
