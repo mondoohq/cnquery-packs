@@ -1,10 +1,14 @@
-# cnquery Query Packs
+# cnquery Query Packs (ARCHIVED)
 
-This project contains inventory and incident response query packs for [`cnquery`](https://github.com/mondoohq/cnquery). We've organized them into these directories:
+**⚠️ This repository has been archived as of June 6, 2025.**
 
-- [core](core) - Core packs contain baseline queries such as incident response probes for different targets. Core query packs are maintained by Mondoo and have strict quality requirements.
-- [extra](extra) - Extra packs are a mix of community- and Mondoo-maintained queries that are outside Mondoo's core support tier.
-- [community](community) - Community packs are primarily maintained by the community with support from the Mondoo team. Community packs may move to extra or core over time.
+The cnquery query packs have been moved to the main cnquery repository:
+**https://github.com/mondoohq/cnquery/tree/main/content**
+
+Please visit the new location for the latest query packs, including:
+- Core packs with baseline queries and incident response probes
+- Extra packs with community and Mondoo-maintained queries
+- Community packs maintained by the community
 
 ## Join the community!
 
